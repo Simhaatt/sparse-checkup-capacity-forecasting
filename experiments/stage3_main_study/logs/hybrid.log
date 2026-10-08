@@ -1,0 +1,18 @@
+fold 1 origin 10 val 2.402
+fold 1 origin 15 val 2.101
+fold 1 origin 20 val 1.647
+fold 2 origin 10 val 3.219
+fold 2 origin 15 val 2.745
+fold 2 origin 20 val 2.086
+fold 3 origin 10 val 1.719
+fold 3 origin 15 val 1.662
+fold 3 origin 20 val 2.156
+fold 4 origin 10 val 1.926
+fold 4 origin 15 val 1.731
+fold 4 origin 20 val 1.64
+fold 5 origin 10 val 2.295
+fold 5 origin 15 val 2.197
+fold 5 origin 20 val 2.831
+origin 10 hybrid equal-cell 2.224 prior-only 3.193
+origin 15 hybrid equal-cell 2.185 prior-only 3.151
+origin 20 hybrid equal-cell 2.182 prior-only 4.49

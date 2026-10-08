@@ -1,0 +1,14 @@
+# Recorded environment of the Sandia benchmark and main study (Linux, Python 3.13.16).
+# The initial benchmark's recorded environment is experiments/stage1_initial_benchmark/requirements-recorded.txt.
+numpy==2.5.3
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.1
+xgboost==3.4.1
+statsmodels==0.15.0
+torch==2.14.1
+matplotlib==3.11.2
+chronos-forecasting==2.3.2   # Chronos-Bolt pipelines (weights: amazon/chronos-bolt-small, pinned revision in the scripts)
+pyarrow
+openpyxl
+requests

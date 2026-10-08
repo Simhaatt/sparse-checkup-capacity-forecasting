@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this code or the processed data, please cite the manuscript and this software release, and the original datasets listed in DATA_LICENSE.md."
+title: "Forecasting lithium-ion capacity from sparse checkups: code, processed data and results"
+type: software
+version: 1.0.0
+date-released: 2026-10-08
+license: MIT
+repository-code: "https://github.com/Simhaatt/sparse-checkup-capacity-forecasting"
+authors:
+  - family-names: "T. T."
+    given-names: "Simhaa"
+    affiliation: "Sri Sivasubramaniya Nadar College of Engineering, Chennai, India"
+    orcid: "https://orcid.org/0009-0006-9041-1103"
+  - family-names: "B."
+    given-names: "Sivakumar"
+    affiliation: "Sri Sivasubramaniya Nadar College of Engineering, Chennai, India"
+    orcid: "https://orcid.org/0000-0002-3612-6241"
+keywords:
+  - lithium-ion battery
+  - capacity forecasting
+  - reference performance test
+  - residual learning
+  - transfer learning
+  - conformal prediction

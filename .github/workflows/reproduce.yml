@@ -1,0 +1,23 @@
+name: reproduce
+
+# Level-1 reproduction: re-derive the reported tables and values from the deposited predictions.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  level1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Level-1 reproduction
+        run: python reproduce/level1.py

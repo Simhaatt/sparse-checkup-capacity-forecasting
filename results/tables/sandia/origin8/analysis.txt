@@ -1,0 +1,39 @@
+         method  n_cells  equal_cell_MAPE  ci95_low  ci95_high  MAPE_LFP  MAPE_NCA  MAPE_NMC
+     large_lstm       39            2.134     1.546      2.889     2.083     2.917     2.032
+            gru       39            2.143     1.655      2.696     2.100     3.481     1.852
+   compact_lstm       39            2.151     1.714      2.614     1.797     3.293     2.729
+             rf       39            2.241     1.536      3.050     2.415     1.903     1.891
+            xgb       39            2.559     1.943      3.233     2.349     2.465     3.132
+  sqrt_efc_lag1       39            2.595     1.815      3.552     2.917     4.437     1.205
+  sqrt_idx_lag1       39            3.038     2.047      4.254     3.346     4.680     1.744
+     ARIMA_AICc       39            3.174     2.230      4.289     2.136     9.459     3.988
+linear_efc_lag1       39            3.426     2.386      4.638     1.412     9.039     6.979
+    persistence       39            4.284     3.385      5.365     3.996     7.344     4.115
+                      family                      comparison  n  mean_diff  ci95_low  ci95_high      p  p_holm
+   snl_origin8_vs_ARIMA_AICc       compact_lstm - ARIMA_AICc 39    -1.0233   -1.9263    -0.2314 0.1347  0.6736
+   snl_origin8_vs_ARIMA_AICc                gru - ARIMA_AICc 39    -1.0315   -1.9394    -0.2288 0.0704  0.4226
+   snl_origin8_vs_ARIMA_AICc         large_lstm - ARIMA_AICc 39    -1.0406   -2.0129    -0.1889 0.0581  0.4064
+   snl_origin8_vs_ARIMA_AICc    linear_efc_lag1 - ARIMA_AICc 39     0.2517   -0.6163     1.1460 0.4596  1.0000
+   snl_origin8_vs_ARIMA_AICc        persistence - ARIMA_AICc 39     1.1095    0.4478     1.7248 0.0005  0.0045
+   snl_origin8_vs_ARIMA_AICc                 rf - ARIMA_AICc 39    -0.9330   -1.9637    -0.0534 0.0372  0.2979
+   snl_origin8_vs_ARIMA_AICc      sqrt_efc_lag1 - ARIMA_AICc 39    -0.5790   -1.4426     0.2073 0.6437  1.0000
+   snl_origin8_vs_ARIMA_AICc      sqrt_idx_lag1 - ARIMA_AICc 39    -0.1362   -1.1162     0.8036 0.9615  1.0000
+   snl_origin8_vs_ARIMA_AICc                xgb - ARIMA_AICc 39    -0.6153   -1.7014     0.3820 0.4185  1.0000
+  snl_origin8_vs_persistence        ARIMA_AICc - persistence 39    -1.1095   -1.7248    -0.4478 0.0005  0.0010
+  snl_origin8_vs_persistence      compact_lstm - persistence 39    -2.1328   -2.9979    -1.4018 0.0000  0.0000
+  snl_origin8_vs_persistence               gru - persistence 39    -2.1410   -2.9274    -1.4543 0.0000  0.0000
+  snl_origin8_vs_persistence        large_lstm - persistence 39    -2.1501   -2.9651    -1.4684 0.0000  0.0000
+  snl_origin8_vs_persistence   linear_efc_lag1 - persistence 39    -0.8578   -2.0139     0.2954 0.1172  0.1172
+  snl_origin8_vs_persistence                rf - persistence 39    -2.0425   -2.9225    -1.2881 0.0000  0.0000
+  snl_origin8_vs_persistence     sqrt_efc_lag1 - persistence 39    -1.6885   -2.1618    -1.2469 0.0000  0.0000
+  snl_origin8_vs_persistence     sqrt_idx_lag1 - persistence 39    -1.2457   -1.8167    -0.6832 0.0001  0.0003
+  snl_origin8_vs_persistence               xgb - persistence 39    -1.7248   -2.7317    -0.8400 0.0001  0.0002
+snl_origin8_vs_sqrt_efc_lag1      ARIMA_AICc - sqrt_efc_lag1 39     0.5790   -0.2073     1.4426 0.6437  1.0000
+snl_origin8_vs_sqrt_efc_lag1    compact_lstm - sqrt_efc_lag1 39    -0.4443   -1.2531     0.2847 0.5759  1.0000
+snl_origin8_vs_sqrt_efc_lag1             gru - sqrt_efc_lag1 39    -0.4525   -1.1354     0.1353 0.6143  1.0000
+snl_origin8_vs_sqrt_efc_lag1      large_lstm - sqrt_efc_lag1 39    -0.4616   -1.1418     0.1530 0.5387  1.0000
+snl_origin8_vs_sqrt_efc_lag1 linear_efc_lag1 - sqrt_efc_lag1 39     0.8307   -0.5229     2.2579 0.4766  1.0000
+snl_origin8_vs_sqrt_efc_lag1     persistence - sqrt_efc_lag1 39     1.6885    1.2469     2.1618 0.0000  0.0000
+snl_origin8_vs_sqrt_efc_lag1              rf - sqrt_efc_lag1 39    -0.3540   -1.0226     0.3000 0.0475  0.3800
+snl_origin8_vs_sqrt_efc_lag1   sqrt_idx_lag1 - sqrt_efc_lag1 39     0.4428    0.1084     0.8038 0.0543  0.3804
+snl_origin8_vs_sqrt_efc_lag1             xgb - sqrt_efc_lag1 39    -0.0363   -0.9519     0.8492 0.8631  1.0000

@@ -1,0 +1,19 @@
+dataset,origin,method,label,n_cells,MAPE,ci_low,ci_high
+Kirkaldy 21700 (40 cells),3,ARIMA_AICc,ARIMA,40,10.052680020752334,8.32764167162559,11.986728788797995
+Kirkaldy 21700 (40 cells),3,hybrid_transfer,"Residual learner (frozen, unit-free)",40,4.0816138771101365,2.8658124909076075,5.505651209632344
+Kirkaldy 21700 (40 cells),3,sqrt_idx_prior,Square-root prior (index),40,4.475040399535663,2.9793616277053605,6.215050790746919
+Kirkaldy 21700 (40 cells),5,ARIMA_AICc,ARIMA,40,7.478984182456813,5.662699381677512,9.58846302262121
+Kirkaldy 21700 (40 cells),5,hybrid_transfer,"Residual learner (frozen, unit-free)",40,3.6052938296543986,2.272986469920006,5.200612550241486
+Kirkaldy 21700 (40 cells),5,sqrt_idx_prior,Square-root prior (index),40,4.364317311142391,2.807863412284196,6.208506336000745
+Kirkaldy 21700 (40 cells),8,ARIMA_AICc,ARIMA,40,3.7880429790826033,2.406559152173158,5.3911409692497365
+Kirkaldy 21700 (40 cells),8,hybrid_transfer,"Residual learner (frozen, unit-free)",40,3.388746722390458,1.9161449482625441,5.140339545085631
+Kirkaldy 21700 (40 cells),8,sqrt_idx_prior,Square-root prior (index),40,4.715279606687826,2.6946440249822334,7.143045213028678
+Oxford pouch (8 cells),5,ARIMA_AICc,ARIMA,8,13.785131132768875,11.949810957690286,15.601141605460251
+Oxford pouch (8 cells),5,hybrid_frozen,"Residual learner (frozen, unit-free)",8,4.39614006564375,3.5817891010908935,5.2560030697817535
+Oxford pouch (8 cells),5,sqrt_idx_prior,Square-root prior (index),8,7.807708302020074,6.733738357827708,8.963552289132014
+Oxford pouch (8 cells),10,ARIMA_AICc,ARIMA,8,5.673372990843154,4.174044278368033,7.070909561125187
+Oxford pouch (8 cells),10,hybrid_frozen,"Residual learner (frozen, unit-free)",8,5.06511601013116,4.351947025651252,5.785490996982582
+Oxford pouch (8 cells),10,sqrt_idx_prior,Square-root prior (index),8,7.3218753689523135,6.409106107639284,8.223231193391618
+Oxford pouch (8 cells),20,ARIMA_AICc,ARIMA,8,4.840958906264715,3.760750059308104,6.057769105097195
+Oxford pouch (8 cells),20,hybrid_frozen,"Residual learner (frozen, unit-free)",8,1.8671007513868854,1.401675060455217,2.3202525794452686
+Oxford pouch (8 cells),20,sqrt_idx_prior,Square-root prior (index),8,5.378184305957632,4.571772859217605,6.177990940755633

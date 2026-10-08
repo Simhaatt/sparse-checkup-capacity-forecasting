@@ -1,0 +1,6 @@
+# Level-1 reproduction (re-derive tables, values and figure checks from deposited predictions)
+numpy>=2.0
+pandas>=2.2
+scipy>=1.13
+xgboost>=2.0
+matplotlib>=3.8

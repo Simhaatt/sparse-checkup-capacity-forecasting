@@ -1,0 +1,9 @@
+# plotting scripts (tested versions)
+matplotlib==3.11.2
+pandas==3.0.5
+numpy==2.5.3
+# draw.io rendering (only needed to re-render the diagrams outside draw.io)
+playwright==1.56.0          # plus: python -m playwright install chromium
+# mxgraph 4.2.2 JavaScript library: npm pack mxgraph@4.2.2 && tar xzf mxgraph-4.2.2.tgz  (into scripts/drawio_tools/)
+Pillow                      # contact sheet only
+# fonts: Liberation Sans (Arial-metric); matplotlib falls back to DejaVu Sans if absent

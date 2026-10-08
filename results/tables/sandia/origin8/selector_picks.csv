@@ -1,0 +1,16 @@
+fold,chemistry,validation_cells,selected
+1,LFP,5,C_arima_nn
+1,NCA,1,C_sqrt_bestlearned
+1,NMC,3,sqrt_idx_lag1
+2,LFP,7,large_lstm
+2,NCA,0,large_lstm
+2,NMC,2,sqrt_idx_lag1
+3,LFP,5,linear_efc_lag1
+3,NCA,0,compact_lstm
+3,NMC,5,sqrt_efc_lag1
+4,LFP,7,C_all_learned
+4,NCA,1,large_lstm
+4,NMC,2,compact_lstm
+5,LFP,6,linear_efc_lag1
+5,NCA,1,C_xgb_nn
+5,NMC,3,C_sqrt_bestlearned

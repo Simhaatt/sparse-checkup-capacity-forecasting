@@ -1,0 +1,247 @@
+--- original/r4/r4_ablate.py
++++ repo/experiments/stage3_main_study/r4_ablate.py
+@@ -1,9 +1,12 @@
+ """R4F: hybrid ablations V1-V6 (incl. Xuan-et-al.-style ARIMA prior) on Luh-Blank (origins 10/15/20) and Sandia (5/8).
+ Usage: python r4_ablate.py arima_cache | luh | snl"""
++import os as _os
++from pathlib import Path as _Path
++_SNL = _os.environ.get('SNL_BENCH', str(_Path(__file__).resolve().parents[1] / 'stage2_sandia'))  # repo edit: was '/home/claude/sandia/bench'
+ import sys, json, pickle, time
+ import numpy as np, pandas as pd
+ from pathlib import Path
+-ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, '/home/claude/sandia/bench')
++ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, _SNL)
+ import r3
+ from univariate import arima_prefix
+ from xgboost import XGBRegressor
+@@ -89,7 +92,7 @@
+     else:
+         origins = (5, 8)
+         def roles(fold, o=None):
+-            p = pd.read_csv(f'/home/claude/sandia/bench/origin{o}/partitions.csv'); p = p[p.fold.eq(fold)].set_index('cell_id').role; r = d.cell_id.map(p)
++            p = pd.read_csv(f'{_SNL}/origin{o}/partitions.csv'); p = p[p.fold.eq(fold)].set_index('cell_id').role; r = d.cell_id.map(p)
+             n = d.groupby('cell_id').size(); sc = set(n[n > o].index)
+             return d[r.eq('fit')], d[r.eq('validation') & d.cell_id.isin(sc)], d[r.eq('test') & d.cell_id.isin(sc)]
+         start, every = 3, {'all': 1, 'every4': 1}
+--- original/r4/r4_chronos_ft.py
++++ repo/experiments/stage3_main_study/r4_chronos_ft.py
+@@ -1,8 +1,11 @@
+ """R4F: fine-tuned Chronos-Bolt-small on sparse SOH checkups (per outer fold), Luh (10/15/20) and Sandia (5/8).
+ Training cells only; checkpoint (200/400/600 steps) chosen by inner-validation equal-cell MAPE averaged over origins."""
++import os as _os
++from pathlib import Path as _Path
++_SNL = _os.environ.get('SNL_BENCH', str(_Path(__file__).resolve().parents[1] / 'stage2_sandia'))  # repo edit: was '/home/claude/sandia/bench'
+ import sys, copy, numpy as np, pandas as pd, torch
+ from pathlib import Path
+-ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, '/home/claude/sandia/bench')
++ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, _SNL)
+ import r3
+ from chronos import BaseChronosPipeline
+ W = '/mnt/user-data/uploads/pinn/JES_capacity_retuning/external/chronos-bolt-small'
+@@ -22,7 +25,7 @@
+         d = r3.data(); s = r3.split(fold, d); long = r3.cohort(d)
+         return pd.concat([s['fit'], s['calibration']]), s['validation'][s['validation'].cell_id.isin(long)], s['test'][s['test'].cell_id.isin(long)]
+     import snl_bench as S
+-    d = S.data().copy(); p = pd.read_csv(f'/home/claude/sandia/bench/origin{o}/partitions.csv'); p = p[p.fold.eq(fold)].set_index('cell_id').role; r = d.cell_id.map(p)
++    d = S.data().copy(); p = pd.read_csv(f'{_SNL}/origin{o}/partitions.csv'); p = p[p.fold.eq(fold)].set_index('cell_id').role; r = d.cell_id.map(p)
+     n = d.groupby('cell_id').size(); sc = set(n[n > o].index)
+     return d[r.eq('fit')], d[r.eq('validation') & d.cell_id.isin(sc)], d[r.eq('test') & d.cell_id.isin(sc)]
+ 
+--- original/r4/r4_g.py
++++ repo/experiments/stage3_main_study/r4_g.py
+@@ -1,8 +1,11 @@
+ """R4G reviewer-robustness studies. Usage: python r4_g.py g1|g2|g3|g4|g5|g6"""
++import os as _os
++from pathlib import Path as _Path
++_SNL = _os.environ.get('SNL_BENCH', str(_Path(__file__).resolve().parents[1] / 'stage2_sandia'))  # repo edit: was '/home/claude/sandia/bench'
+ import sys, json, numpy as np, pandas as pd
+ from pathlib import Path
+ from scipy import stats
+-ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / 'trainer')); sys.path.insert(0, '/home/claude/sandia/bench')
++ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, str(ROOT / 'trainer')); sys.path.insert(0, _SNL)
+ from xgboost import XGBRegressor
+ SEEDS = [42, 52, 62]
+ 
+@@ -76,7 +79,7 @@
+     sd = S.data(); seqs = {c: g.sort_values('timestamp_s').Q.to_numpy() for c, g in sd.groupby('cell_id')}; kn2 = knee_flags(seqs)
+     hs = pd.read_csv(ROOT / 'results/r4_hybrid_snl_pred.csv'); hs = hs[hs.role.eq('test')].assign(method='hybrid_sqrt_xgb')
+     for o in (5, 8):
+-        c = pd.read_csv(f'/home/claude/sandia/bench/origin{o}/controls_pred.csv'); c = c[c.family.isin(['ARIMA_AICc', 'sqrt_efc_lag1'])].rename(columns={'family': 'method', 'Q_true': 'soh_true', 'Q_pred': 'pred'}); c['origin'] = o
++        c = pd.read_csv(f'{_SNL}/origin{o}/controls_pred.csv'); c = c[c.family.isin(['ARIMA_AICc', 'sqrt_efc_lag1'])].rename(columns={'family': 'method', 'Q_true': 'soh_true', 'Q_pred': 'pred'}); c['origin'] = o
+         for m, x in pd.concat([c[['method', 'origin', 'seed', 'cell_id', 'pred', 'soh_true']], hs[hs.origin.eq(o)][['method', 'origin', 'seed', 'cell_id', 'pred', 'soh_true']]]).groupby('method'):
+             e = eq(x); rows.append(dict(dataset='Sandia', method=m, origin=o, knee_cells=int(sum(kn2[c_] for c_ in e.index)), MAPE_knee=e[[kn2[c_] for c_ in e.index]].mean(), MAPE_nonknee=e[[not kn2[c_] for c_ in e.index]].mean()))
+     # Kirkaldy
+@@ -112,7 +115,7 @@
+                 if name == 'luh':
+                     s = r3.split(fold, d); tr = pd.concat([s['fit'], s['calibration']]); va = s['validation'][s['validation'].cell_id.isin(long)]; te = s['test'][s['test'].cell_id.isin(long)]
+                 else:
+-                    p = pd.read_csv(f'/home/claude/sandia/bench/origin{o}/partitions.csv'); p = p[p.fold.eq(fold)].set_index('cell_id').role; r = d.cell_id.map(p)
++                    p = pd.read_csv(f'{_SNL}/origin{o}/partitions.csv'); p = p[p.fold.eq(fold)].set_index('cell_id').role; r = d.cell_id.map(p)
+                     n = d.groupby('cell_id').size(); sc = set(n[n > o].index); tr = d[r.eq('fit')]; va = d[r.eq('validation') & d.cell_id.isin(sc)]; te = d[r.eq('test') & d.cell_id.isin(sc)]
+                 T = frame(tr, list(range(start, tr.groupby('cell_id').size().max() - 1, stepk))); V = frame(va, [o]); E = frame(te, [o]); sc_ = []
+                 for c in H.CONFIGS:
+@@ -183,7 +186,7 @@
+     h = pd.read_csv(ROOT / 'results/r4_hybrid_pred.csv'); x = h.merge(ar, on=['fold', 'origin', 'role', 'seed', 'cell_id', 'row'], validate='one_to_one'); x['dataset'] = 'luh'
+     hs = pd.read_csv(ROOT / 'results/r4_hybrid_snl_pred.csv'); xs = []
+     for o in (5, 8):
+-        c = pd.read_csv(f'/home/claude/sandia/bench/origin{o}/controls_pred.csv'); c = c[c.family.eq('ARIMA_AICc')][['cell_id', 'row', 'Q_pred']].rename(columns={'Q_pred': 'a'})
++        c = pd.read_csv(f'{_SNL}/origin{o}/controls_pred.csv'); c = c[c.family.eq('ARIMA_AICc')][['cell_id', 'row', 'Q_pred']].rename(columns={'Q_pred': 'a'})
+         xs.append(hs[hs.origin.eq(o)].merge(c, on=['cell_id', 'row'], validate='many_to_one'))
+     x = pd.concat([x[['dataset', 'fold', 'origin', 'role', 'seed', 'cell_id', 'row', 'soh_true', 'pred', 'a']], pd.concat(xs).assign(dataset='snl')[['dataset', 'fold', 'origin', 'role', 'seed', 'cell_id', 'row', 'soh_true', 'pred', 'a']]])
+     sel = []
+--- original/r4/r4_hybrid_snl.py
++++ repo/experiments/stage3_main_study/r4_hybrid_snl.py
+@@ -1,9 +1,12 @@
+ """Round 4 D on Sandia: same hybrid as r4_hybrid.py; Sandia folds/partitions from the Sandia benchmark; origins 5 and 8.
+ Prior axis: planned EFC (k_exp; index-free), lag-one, slope<=0. Training on 'fit' cells, selection on 'validation'."""
++import os as _os
++from pathlib import Path as _Path
++_SNL = _os.environ.get('SNL_BENCH', str(_Path(__file__).resolve().parents[1] / 'stage2_sandia'))  # repo edit: was '/home/claude/sandia/bench'
+ import sys, os
+ import numpy as np, pandas as pd
+ from pathlib import Path
+-sys.path.insert(0, '/home/claude/sandia/bench'); sys.path.insert(0, str(Path(__file__).resolve().parent))
++sys.path.insert(0, _SNL); sys.path.insert(0, str(Path(__file__).resolve().parent))
+ import snl_bench as S
+ import r4_hybrid as H
+ from xgboost import XGBRegressor
+@@ -21,7 +24,7 @@
+     d = S.data(); d['Q'] = d.Q * d.Q0  # back to Ah so SOH = Q/Q_first inside cell_rows
+     out, sel = [], []
+     for o in (5, 8):
+-        part = pd.read_csv(f'/home/claude/sandia/bench/origin{o}/partitions.csv'); n = d.groupby('cell_id').size(); sc = set(n[n > o].index)
++        part = pd.read_csv(f'{_SNL}/origin{o}/partitions.csv'); n = d.groupby('cell_id').size(); sc = set(n[n > o].index)
+         for fold in range(1, 6):
+             roles = part[part.fold.eq(fold)].set_index('cell_id').role
+             tr = d[d.cell_id.map(roles).eq('fit')]; va = d[d.cell_id.map(roles).eq('validation') & d.cell_id.isin(sc)]; te = d[d.cell_id.map(roles).eq('test') & d.cell_id.isin(sc)]
+--- original/r4/r4_pooled.py
++++ repo/experiments/stage3_main_study/r4_pooled.py
+@@ -3,10 +3,13 @@
+ Luh-Blank: configuration = R4A validation-best history-only trial of that family (origin, fold); train fit+calibration
+ (+validation for XGB), neural early stopping on validation. Sandia: configuration = Sandia fold-selected setting of
+ that family at that origin, history-only input; train fit (+validation for XGB). Usage: python r4_pooled.py [--workers 2]"""
++import os as _os
++from pathlib import Path as _Path
++_SNL = _os.environ.get('SNL_BENCH', str(_Path(__file__).resolve().parents[1] / 'stage2_sandia'))  # repo edit: was '/home/claude/sandia/bench'
+ from r3 import *
+ import copy, argparse, sys
+ from concurrent.futures import ProcessPoolExecutor
+-sys.path.insert(0, '/home/claude/sandia/bench')
++sys.path.insert(0, _SNL)
+ FAMS = ['gru', 'xgb']
+ COLS = ['cell_id', 'timestamp_s', 'Q', 'k_exp', 'age_type']
+ 
+@@ -27,7 +30,7 @@
+     if target == 'LB':
+         m = pd.read_csv(ROOT / 'audit/cell_partitions.csv'); m = m[m.fold.eq(fold)]
+         r = dict(zip('LB:' + m.cell_id, m.role)); return {k: ('fit' if v == 'calibration' else v) for k, v in r.items()}
+-    m = pd.read_csv(f'/home/claude/sandia/bench/origin{origin}/partitions.csv'); m = m[m.fold.eq(fold)]
++    m = pd.read_csv(f'{_SNL}/origin{origin}/partitions.csv'); m = m[m.fold.eq(fold)]
+     return dict(zip('SNL:' + m.cell_id, m.role))
+ 
+ 
+@@ -61,7 +64,7 @@
+                 for arm in ('source_only', 'pooled'):
+                     for sd in SEEDS: J.append(dict(job_id=f'LB_o{o}_f{f}_{fam}_{arm}_s{sd}', target='LB', origin=o, fold=f, family=fam, arm=arm, seed=sd, cfg=cfg))
+     for o in (5, 8):
+-        w = pd.read_csv(f'/home/claude/sandia/bench/origin{o}/fold_selected_settings.csv')
++        w = pd.read_csv(f'{_SNL}/origin{o}/fold_selected_settings.csv')
+         for f in range(1, 6):
+             for fam in FAMS:
+                 cfg = json.loads(w[(w.fold == f) & (w.family == fam)].iloc[0].cfg_json)
+--- original/r4/r4_post.py
++++ repo/experiments/stage3_main_study/r4_post.py
+@@ -1,9 +1,12 @@
+ """Post-hoc summaries for R4C (pooled) and R4F (fine-tuned Chronos). Equal-cell MAPE: steps -> seeds -> cells.
+ Paired Wilcoxon on common cells; Holm within (dataset, origin) family. Usage: python r4_post.py pooled|chronos"""
++import os as _os
++from pathlib import Path as _Path
++_SNL = _os.environ.get('SNL_BENCH', str(_Path(__file__).resolve().parents[1] / 'stage2_sandia'))  # repo edit: was '/home/claude/sandia/bench'
+ import sys, numpy as np, pandas as pd
+ from pathlib import Path
+ from scipy import stats
+-ROOT = Path(__file__).resolve().parent; T = ROOT / 'tables'; R = ROOT / 'results'; SNL = Path('/home/claude/sandia/bench')
++ROOT = Path(__file__).resolve().parent; T = ROOT / 'tables'; R = ROOT / 'results'; SNL = Path(_SNL)
+ 
+ 
+ def holm(p):
+--- original/r4/r4_uncert.py
++++ repo/experiments/stage3_main_study/r4_uncert.py
+@@ -3,9 +3,12 @@
+ fold/origin/seed/step on the 20 calibration cells (rank ceil((n+1)q), infinite if > n); coverage/width on test.
+ Decisions (common script): 80%-SOH crossing P/R/F1, last-step APE, signed bias, optimistic share.
+ Sandia: CV+-style intervals and decisions via the Sandia extras functions."""
++import os as _os
++from pathlib import Path as _Path
++_SNL = _os.environ.get('SNL_BENCH', str(_Path(__file__).resolve().parents[1] / 'stage2_sandia'))  # repo edit: was '/home/claude/sandia/bench'
+ import sys, numpy as np, pandas as pd
+ from pathlib import Path
+-ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, '/home/claude/sandia/bench')
++ROOT = Path(__file__).resolve().parent; sys.path.insert(0, str(ROOT)); sys.path.insert(0, _SNL)
+ import r3, r4_hybrid as H
+ from xgboost import XGBRegressor
+ 
+--- original/r4/resume_all.sh
++++ repo/experiments/stage3_main_study/resume_all.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ # Idempotent: (re)start every round-4 chain that is not running. Safe after container restarts.
+-cd /home/claude/r4
++cd "$(dirname "$0")"  # repo edit: was cd /home/claude/r4
+ running() { ps -ww -eo args | awk -v p="$1" 'index($0,p)>0 && index($0,"awk -v p")==0 {f=1} END{exit !f}'; }
+ if ! running "/bin/bash ./run_all_v2.sh" && ! grep -q R4_ALL_DONE logs/run_all.log; then nohup ./run_all_v2.sh >> logs/run_all.log 2>&1 & echo "started run_all"; fi
+ if ! running "python3 r4_ablate.py" && ! grep -q ABL_DONE logs/ablate.log 2>/dev/null; then
+--- original/r4/run_ab.sh
++++ repo/experiments/stage3_main_study/run_ab.sh
+@@ -1,4 +1,4 @@
+ #!/bin/bash
+-cd /home/claude/r4
++cd "$(dirname "$0")"  # repo edit: was cd /home/claude/r4
+ python3 r4_models.py search --workers 2 && python3 r4_models.py final --workers 2
+ echo AB_DONE
+--- original/r4/run_after.sh
++++ repo/experiments/stage3_main_study/run_after.sh
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-cd /home/claude/r4
++cd "$(dirname "$0")"  # repo edit: was cd /home/claude/r4
+ while ! grep -q AB_DONE logs/ab.log; do sleep 60; done
+ python3 r4_pooled.py --workers 2 > logs/pooled.log 2>&1
+ echo POOLED_DONE >> logs/pooled.log
+--- original/r4/run_all.sh
++++ repo/experiments/stage3_main_study/run_all.sh
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-cd /home/claude/r4
++cd "$(dirname "$0")"  # repo edit: was cd /home/claude/r4
+ set -e
+ for o in 10 20 15; do
+   python3 r4_models.py search --origin $o --workers 2
+--- original/r4/run_all_v2.sh
++++ repo/experiments/stage3_main_study/run_all_v2.sh
+@@ -1,6 +1,6 @@
+ #!/bin/bash
+ # R4A_compute_amendment: origins 10 then 15; pooled; origin 20 only as an addendum at the very end.
+-cd /home/claude/r4
++cd "$(dirname "$0")"  # repo edit: was cd /home/claude/r4
+ set -e
+ while ps -ww -eo args | grep -q "[r]4_models.py search --origin 10"; do sleep 60; done
+ for o in 10 15; do
+--- original/sandia/bench/run_all.sh
++++ repo/experiments/stage2_sandia/run_all.sh
+@@ -1,5 +1,5 @@
+ #!/bin/bash
+-cd /home/claude/sandia/bench
++cd "$(dirname "$0")"  # repo edit: was cd /home/claude/sandia/bench
+ for o in 5 8; do
+   export SNL_ORIGIN=$o
+   python3 snl_bench.py prepare && python3 snl_bench.py controls && python3 snl_bench.py search && python3 snl_bench.py final && python3 snl_bench.py analyse
+--- original/prepare_plot_data.py
++++ repo/paper_figures/scripts/prepare_plot_data.py
+@@ -85,5 +85,5 @@
+ 
+ 
+ if __name__ == '__main__':
+-    ap = argparse.ArgumentParser(); ap.add_argument('--r4', default='/home/claude/r4'); ap.add_argument('--out', default=str(Path(__file__).resolve().parents[1] / 'data_used'))
++    ap = argparse.ArgumentParser(); ap.add_argument('--r4', default=str(Path(__file__).resolve().parents[2] / 'experiments' / 'stage3_main_study')); ap.add_argument('--out', default=str(Path(__file__).resolve().parents[1] / 'data_used'))  # repo edit: --r4 default was '/home/claude/r4'
+     a = ap.parse_args(); main(Path(a.r4), Path(a.out))

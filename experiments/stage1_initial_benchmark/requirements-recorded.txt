@@ -1,0 +1,14 @@
+# RecordedWindowsPython3.14.3 runtime; chronos-forecasting2.3.2 was installed in a private target directory.
+numpy==2.4.2
+pandas==2.3.3
+scipy==1.17.1
+scikit-learn==1.8.0
+torch==2.14.0
+xgboost==3.2.0
+statsmodels==0.15.0
+requests==2.33.1
+matplotlib==3.10.9
+transformers==4.57.6
+accelerate==1.15.0
+huggingface-hub==0.36.2
+chronos-forecasting==2.3.2

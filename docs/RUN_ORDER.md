@@ -1,0 +1,86 @@
+# Level-2 run order
+
+The experiment folders contain the original runners. Each was run in its own workspace, with `inputs/`, `results/`, `tables/` and `audit/` subfolders next to the scripts. `scripts/setup_workspace.py` creates those folders from the files in this repository:
+
+```bash
+python scripts/setup_workspace.py          # fills experiments/*/inputs, results, tables, audit from data/ and results/
+```
+
+Recorded environments:
+
+- **Initial benchmark:** Windows 11, Python 3.14.3; see `experiments/stage1_initial_benchmark/requirements-recorded.txt`.
+- **Sandia benchmark and main study:** Linux with 2 CPUs, Python 3.13.16, XGBoost 3.4.1, scikit-learn 1.9.1, statsmodels 0.15.0, PyTorch 2.14; see `requirements-full.txt`.
+
+Exact numerical agreement across different library versions or hardware is not guaranteed for the neural models. The XGBoost, ARIMA and analysis steps are deterministic given the seeds.
+
+## 1. Data
+Follow `data/README.md`. Only Sandia must be rebuilt from its source; the other processed tables are in `data/processed/`.
+
+## 2. Initial grouped benchmark (`experiments/stage1_initial_benchmark`)
+
+This stage produced the reference predictions in `results/predictions/r3_reference_predictions.csv.gz`. `r3.py` defines the fixed protocol: cell-disjoint selection and calibration, and causal input adapters. Plan: `PLAN.json`.
+
+The recorded command sequence is copied from `build_complete_report.py`. These were Windows PowerShell commands; `prepare_reproduction.py` creates a fresh run directory.
+
+```
+python -X utf8 aligned_resistance_v2.py
+python -X utf8 operating_metadata.py
+python -X utf8 run_models.py --smoke
+python -X utf8 run_models.py
+python -X utf8 semiempirical_v3.py
+python -X utf8 summary_current.py
+python -X utf8 chronos_tiny.py
+python -X utf8 rebuild_chronos_small.py
+python -X utf8 native_chronos_coverage.py
+python -X utf8 leaky_macro_diagnostic.py
+python -X utf8 analyse_round3.py
+python -X utf8 learning_curve.py
+python -X utf8 oxford_models.py
+python -X utf8 robustness.py prepare
+python -X utf8 robustness.py arima
+python -X utf8 robustness.py models
+python -X utf8 analyse_extras.py
+python -X utf8 quiet_resources.py
+python -X utf8 make_plots.py
+python -X utf8 verify_round3.py
+```
+
+Chronos-Bolt weights come from Hugging Face `amazon/chronos-bolt-small` (Apache-2.0); see `stage0_capacity_retuning/fetch_external.py chronos`.
+
+## 3. Sandia benchmark (`experiments/stage2_sandia`)
+
+`run_all.sh` runs `snl_bench.py prepare | controls | search | final | analyse` for origins 5 and 8. The origin is set with `SNL_ORIGIN`. Then, for each origin:
+
+```bash
+export SNL_ORIGIN=5   # then repeat with 8
+python refit_val.py   # inner-validation predictions of the fold winners (reproduces the saved test predictions)
+python chronos_snl.py # zero-shot Chronos-Bolt-small; set CHRONOS_DIR to the pinned weights
+python extras.py      # ensembles, validation-chosen selector, CV+-style intervals, decisions
+```
+
+## 4. Main study (`experiments/stage3_main_study`)
+
+Plan and time-stamped amendments: `PLAN_R4.json`. Run logs: `logs/`.
+
+| Step | Command | Output |
+|---|---|---|
+| residual learner (primary) | `python r4_hybrid.py` | `results/r4_hybrid_pred.csv` |
+| residual learner (Sandia) | `python r4_hybrid_snl.py` | `results/r4_hybrid_snl_pred.csv` |
+| unit-free transfer (21700) | `python r4_transfer.py`, then `python r4_transfer_ablate.py` | transfer predictions and tables |
+| origin-specific re-tuning | `bash run_all_v2.sh` (`r4_models.py search/final` at origins 10 and 15; `r4_pooled.py`) | `results/r4_search_*`, `r4_final_*`, `r4_pooled_*` |
+| ablations | `python r4_ablate.py arima_cache && python r4_ablate.py snl && python r4_ablate.py luh` | ablation predictions and tables |
+| fine-tuned Chronos | `python r4_chronos_ft.py snl && python r4_chronos_ft.py luh` | `results/r4_chronos_ft_*` |
+| intervals and decisions | `python r4_uncert.py`, then `python r4_decisions_v2.py` | conformal tables and decision tables |
+| robustness | `python r4_g.py g1` (Oxford), then `g2` (knees), `g3` (no schedule), `g4` (noise and missing checkups), `g5` (Mondrian intervals), `g6` (validation-chosen ARIMA weight) | `tables/r4_g*` |
+| analysis | `python r4_analyse.py`, `python r4_post.py pooled`, `python r4_post.py chronos`, `python r4_report.py` | summary and pair tables, auto-generated report |
+| post hoc tables | `python summarise_from_predictions.py --pred results --data ../../data/processed --out tables` | horizon, regime and post hoc tables |
+
+`resume_all.sh` shows how the long chains were launched and resumed. Set `SNL_BENCH` if the Sandia benchmark folder is not `experiments/stage2_sandia`.
+
+## 5. Figures (`paper_figures/scripts`)
+
+- `prepare_plot_data.py --r4 <main-study workspace>` refreshes `data_used/`.
+- `check_figure_values.py` asserts the plotted values.
+- `fig_*.py` writes the PDF, SVG and 600-dpi PNG files.
+- Diagrams are generated by `drawio_tools/make_fig_*.py` and rendered with `drawio_tools/render_drawio.py`. Rendering needs Playwright Chromium and mxGraph 4.2.2: `npm pack mxgraph@4.2.2 && tar xzf mxgraph-4.2.2.tgz -C drawio_tools`.
+- Steps that train on, or summarise, Sandia (`r4_hybrid_snl`, the Sandia parts of `r4_ablate`, `r4_uncert`, `r4_g` g2/g3/g6, `r4_pooled`, `r4_post`, `r4_chronos_ft snl`) need the Sandia benchmark outputs from step 3.

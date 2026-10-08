@@ -1,0 +1,729 @@
+[
+ {
+  "claim": "Table 2: Residual learner MAPE, origin 10",
+  "table": "summary",
+  "key": [
+   "hybrid_sqrt_xgb",
+   10
+  ],
+  "expected": 2.22,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Residual learner MAPE, origin 15",
+  "table": "summary",
+  "key": [
+   "hybrid_sqrt_xgb",
+   15
+  ],
+  "expected": 2.19,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Residual learner MAPE, origin 20",
+  "table": "summary",
+  "key": [
+   "hybrid_sqrt_xgb",
+   20
+  ],
+  "expected": 2.18,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: ARIMA MAPE, origin 10",
+  "table": "summary",
+  "key": [
+   "ARIMA_AICc",
+   10
+  ],
+  "expected": 3.28,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: ARIMA MAPE, origin 15",
+  "table": "summary",
+  "key": [
+   "ARIMA_AICc",
+   15
+  ],
+  "expected": 2.71,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: ARIMA MAPE, origin 20",
+  "table": "summary",
+  "key": [
+   "ARIMA_AICc",
+   20
+  ],
+  "expected": 2.76,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: ARIMA-residual average MAPE, origin 10",
+  "table": "summary",
+  "key": [
+   "avg_ARIMA_hybrid",
+   10
+  ],
+  "expected": 2.35,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: ARIMA-residual average MAPE, origin 15",
+  "table": "summary",
+  "key": [
+   "avg_ARIMA_hybrid",
+   15
+  ],
+  "expected": 2.14,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: ARIMA-residual average MAPE, origin 20",
+  "table": "summary",
+  "key": [
+   "avg_ARIMA_hybrid",
+   20
+  ],
+  "expected": 2.07,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Square-root prior MAPE, origin 10",
+  "table": "summary",
+  "key": [
+   "sqrt_k_lag1",
+   10
+  ],
+  "expected": 3.19,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Square-root prior MAPE, origin 15",
+  "table": "summary",
+  "key": [
+   "sqrt_k_lag1",
+   15
+  ],
+  "expected": 3.15,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Square-root prior MAPE, origin 20",
+  "table": "summary",
+  "key": [
+   "sqrt_k_lag1",
+   20
+  ],
+  "expected": 4.49,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Persistence MAPE, origin 10",
+  "table": "summary",
+  "key": [
+   "persistence",
+   10
+  ],
+  "expected": 6.94,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Persistence MAPE, origin 15",
+  "table": "summary",
+  "key": [
+   "persistence",
+   15
+  ],
+  "expected": 5.48,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Persistence MAPE, origin 20",
+  "table": "summary",
+  "key": [
+   "persistence",
+   20
+  ],
+  "expected": 4.88,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Earlier ARIMA-XGBoost average MAPE, origin 10",
+  "table": "summary",
+  "key": [
+   "avg_ARIMA_XGB",
+   10
+  ],
+  "expected": 3.21,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Earlier ARIMA-XGBoost average MAPE, origin 15",
+  "table": "summary",
+  "key": [
+   "avg_ARIMA_XGB",
+   15
+  ],
+  "expected": 2.5,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: Earlier ARIMA-XGBoost average MAPE, origin 20",
+  "table": "summary",
+  "key": [
+   "avg_ARIMA_XGB",
+   20
+  ],
+  "expected": 2.29,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: re-tuned best neural MAPE, origin 10",
+  "table": "summary",
+  "key": [
+   "r4_best_neural",
+   10
+  ],
+  "expected": 2.63,
+  "decimals": 2
+ },
+ {
+  "claim": "Table 2: re-tuned best neural MAPE, origin 15",
+  "table": "summary",
+  "key": [
+   "r4_best_neural",
+   15
+  ],
+  "expected": 2.23,
+  "decimals": 2
+ },
+ {
+  "claim": "Holm p, residual learner vs ARIMA, origin 10",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_ARIMA_origin10",
+   "hybrid_sqrt_xgb - ARIMA_AICc"
+  ],
+  "expected": 0.0016,
+  "decimals": 4,
+  "op": "eq"
+ },
+ {
+  "claim": "Holm p, residual learner vs ARIMA, origin 15",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_ARIMA_origin15",
+   "hybrid_sqrt_xgb - ARIMA_AICc"
+  ],
+  "expected": 0.287,
+  "decimals": 3,
+  "op": "eq"
+ },
+ {
+  "claim": "Holm p, residual learner vs ARIMA, origin 20",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_ARIMA_origin20",
+   "hybrid_sqrt_xgb - ARIMA_AICc"
+  ],
+  "expected": 0.176,
+  "decimals": 3,
+  "op": "eq"
+ },
+ {
+  "claim": "Holm p < 1e-4, average vs ARIMA, origin 10",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_ARIMA_origin10",
+   "avg_ARIMA_hybrid - ARIMA_AICc"
+  ],
+  "expected": 0.0001,
+  "decimals": 4,
+  "op": "lt"
+ },
+ {
+  "claim": "Holm p < 1e-4, average vs ARIMA, origin 15",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_ARIMA_origin15",
+   "avg_ARIMA_hybrid - ARIMA_AICc"
+  ],
+  "expected": 0.0001,
+  "decimals": 4,
+  "op": "lt"
+ },
+ {
+  "claim": "Holm p < 0.001, average vs ARIMA, origin 20",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_ARIMA_origin20",
+   "avg_ARIMA_hybrid - ARIMA_AICc"
+  ],
+  "expected": 0.001,
+  "decimals": 4,
+  "op": "lt"
+ },
+ {
+  "claim": "Holm p, average vs earlier combination, origin 10",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_round3best_origin10",
+   "avg_ARIMA_hybrid - avg_ARIMA_XGB"
+  ],
+  "expected": 0.0006,
+  "decimals": 4,
+  "op": "eq"
+ },
+ {
+  "claim": "Holm p, average vs earlier combination, origin 15",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_round3best_origin15",
+   "avg_ARIMA_hybrid - avg_ARIMA_XGB"
+  ],
+  "expected": 0.111,
+  "decimals": 3,
+  "op": "eq"
+ },
+ {
+  "claim": "Holm p, average vs earlier combination, origin 20",
+  "table": "pairs_holm",
+  "key": [
+   "r4_vs_round3best_origin20",
+   "avg_ARIMA_hybrid - avg_ARIMA_XGB"
+  ],
+  "expected": 0.0137,
+  "decimals": 4,
+  "op": "eq"
+ },
+ {
+  "claim": "21700 transfer: unit-free learner MAPE, origin 3",
+  "table": "results/tables/main_study/r4_transfer_summary.csv",
+  "key": {
+   "origin": 3,
+   "method": "hybrid_transfer"
+  },
+  "column": "MAPE",
+  "expected": 4.08,
+  "decimals": 2
+ },
+ {
+  "claim": "21700 transfer: ARIMA MAPE, origin 3",
+  "table": "results/tables/main_study/r4_transfer_summary.csv",
+  "key": {
+   "origin": 3,
+   "method": "ARIMA_AICc"
+  },
+  "column": "MAPE",
+  "expected": 10.05,
+  "decimals": 2
+ },
+ {
+  "claim": "21700 transfer: unit-free learner MAPE, origin 5",
+  "table": "results/tables/main_study/r4_transfer_summary.csv",
+  "key": {
+   "origin": 5,
+   "method": "hybrid_transfer"
+  },
+  "column": "MAPE",
+  "expected": 3.61,
+  "decimals": 2
+ },
+ {
+  "claim": "21700 transfer: ARIMA MAPE, origin 5",
+  "table": "results/tables/main_study/r4_transfer_summary.csv",
+  "key": {
+   "origin": 5,
+   "method": "ARIMA_AICc"
+  },
+  "column": "MAPE",
+  "expected": 7.48,
+  "decimals": 2
+ },
+ {
+  "claim": "21700 transfer: unit-free learner MAPE, origin 8",
+  "table": "results/tables/main_study/r4_transfer_summary.csv",
+  "key": {
+   "origin": 8,
+   "method": "hybrid_transfer"
+  },
+  "column": "MAPE",
+  "expected": 3.39,
+  "decimals": 2
+ },
+ {
+  "claim": "21700 transfer: ARIMA MAPE, origin 8",
+  "table": "results/tables/main_study/r4_transfer_summary.csv",
+  "key": {
+   "origin": 8,
+   "method": "ARIMA_AICc"
+  },
+  "column": "MAPE",
+  "expected": 3.79,
+  "decimals": 2
+ },
+ {
+  "claim": "Pouch transfer: frozen learner MAPE, origin 5",
+  "table": "results/tables/main_study/r4_g1_oxford_summary.csv",
+  "key": {
+   "method": "hybrid_frozen"
+  },
+  "column": "5",
+  "expected": 4.4,
+  "decimals": 2
+ },
+ {
+  "claim": "Pouch transfer: ARIMA MAPE, origin 5",
+  "table": "results/tables/main_study/r4_g1_oxford_summary.csv",
+  "key": {
+   "method": "ARIMA_AICc"
+  },
+  "column": "5",
+  "expected": 13.79,
+  "decimals": 2
+ },
+ {
+  "claim": "Pouch transfer: frozen learner MAPE, origin 10",
+  "table": "results/tables/main_study/r4_g1_oxford_summary.csv",
+  "key": {
+   "method": "hybrid_frozen"
+  },
+  "column": "10",
+  "expected": 5.07,
+  "decimals": 2
+ },
+ {
+  "claim": "Pouch transfer: ARIMA MAPE, origin 10",
+  "table": "results/tables/main_study/r4_g1_oxford_summary.csv",
+  "key": {
+   "method": "ARIMA_AICc"
+  },
+  "column": "10",
+  "expected": 5.67,
+  "decimals": 2
+ },
+ {
+  "claim": "Pouch transfer: frozen learner MAPE, origin 20",
+  "table": "results/tables/main_study/r4_g1_oxford_summary.csv",
+  "key": {
+   "method": "hybrid_frozen"
+  },
+  "column": "20",
+  "expected": 1.87,
+  "decimals": 2
+ },
+ {
+  "claim": "Pouch transfer: ARIMA MAPE, origin 20",
+  "table": "results/tables/main_study/r4_g1_oxford_summary.csv",
+  "key": {
+   "method": "ARIMA_AICc"
+  },
+  "column": "20",
+  "expected": 4.84,
+  "decimals": 2
+ },
+ {
+  "claim": "Crossing F1, residual learner, origin 10",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "hybrid_sqrt_xgb",
+   "origin": 10
+  },
+  "column": "F1",
+  "expected": 0.96,
+  "decimals": 2
+ },
+ {
+  "claim": "Crossing F1, ARIMA, origin 10",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 10
+  },
+  "column": "F1",
+  "expected": 0.87,
+  "decimals": 2
+ },
+ {
+  "claim": "Crossing-eligible cells, origin 10",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 10
+  },
+  "column": "eligible",
+  "expected": 100,
+  "decimals": 0
+ },
+ {
+  "claim": "True crossings, origin 10",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 10
+  },
+  "column": "true_events",
+  "expected": 50,
+  "decimals": 0
+ },
+ {
+  "claim": "Crossing F1, residual learner, origin 15",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "hybrid_sqrt_xgb",
+   "origin": 15
+  },
+  "column": "F1",
+  "expected": 0.94,
+  "decimals": 2
+ },
+ {
+  "claim": "Crossing F1, ARIMA, origin 15",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 15
+  },
+  "column": "F1",
+  "expected": 0.87,
+  "decimals": 2
+ },
+ {
+  "claim": "Crossing-eligible cells, origin 15",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 15
+  },
+  "column": "eligible",
+  "expected": 80,
+  "decimals": 0
+ },
+ {
+  "claim": "True crossings, origin 15",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 15
+  },
+  "column": "true_events",
+  "expected": 30,
+  "decimals": 0
+ },
+ {
+  "claim": "Crossing F1, residual learner, origin 20",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "hybrid_sqrt_xgb",
+   "origin": 20
+  },
+  "column": "F1",
+  "expected": 0.9,
+  "decimals": 2
+ },
+ {
+  "claim": "Crossing F1, ARIMA, origin 20",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 20
+  },
+  "column": "F1",
+  "expected": 0.9,
+  "decimals": 2
+ },
+ {
+  "claim": "Crossing-eligible cells, origin 20",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 20
+  },
+  "column": "eligible",
+  "expected": 70,
+  "decimals": 0
+ },
+ {
+  "claim": "True crossings, origin 20",
+  "table": "results/tables/main_study/r4_decisions_luh_r3rule.csv",
+  "key": {
+   "method": "ARIMA_AICc",
+   "origin": 20
+  },
+  "column": "true_events",
+  "expected": 20,
+  "decimals": 0
+ },
+ {
+  "claim": "80% split-conformal coverage, origin 10",
+  "table": "results/tables/main_study/r4_hybrid_conformal_luh.csv",
+  "key": {
+   "origin": 10,
+   "nominal": 0.8
+  },
+  "column": "coverage_equal_cell",
+  "expected": 0.84,
+  "decimals": 2
+ },
+ {
+  "claim": "90% split-conformal coverage, origin 10",
+  "table": "results/tables/main_study/r4_hybrid_conformal_luh.csv",
+  "key": {
+   "origin": 10,
+   "nominal": 0.9
+  },
+  "column": "coverage_equal_cell",
+  "expected": 0.95,
+  "decimals": 2
+ },
+ {
+  "claim": "80% split-conformal coverage, origin 15",
+  "table": "results/tables/main_study/r4_hybrid_conformal_luh.csv",
+  "key": {
+   "origin": 15,
+   "nominal": 0.8
+  },
+  "column": "coverage_equal_cell",
+  "expected": 0.82,
+  "decimals": 2
+ },
+ {
+  "claim": "90% split-conformal coverage, origin 15",
+  "table": "results/tables/main_study/r4_hybrid_conformal_luh.csv",
+  "key": {
+   "origin": 15,
+   "nominal": 0.9
+  },
+  "column": "coverage_equal_cell",
+  "expected": 0.91,
+  "decimals": 2
+ },
+ {
+  "claim": "80% split-conformal coverage, origin 20",
+  "table": "results/tables/main_study/r4_hybrid_conformal_luh.csv",
+  "key": {
+   "origin": 20,
+   "nominal": 0.8
+  },
+  "column": "coverage_equal_cell",
+  "expected": 0.79,
+  "decimals": 2
+ },
+ {
+  "claim": "90% split-conformal coverage, origin 20",
+  "table": "results/tables/main_study/r4_hybrid_conformal_luh.csv",
+  "key": {
+   "origin": 20,
+   "nominal": 0.9
+  },
+  "column": "coverage_equal_cell",
+  "expected": 0.9,
+  "decimals": 2
+ },
+ {
+  "claim": "One-step error, ARIMA, origin 10",
+  "table": "results/tables/main_study/r4_hybrid_error_by_horizon.csv",
+  "key": {
+   "origin": 10,
+   "step": 1
+  },
+  "column": "ARIMA_AICc",
+  "expected": 0.21,
+  "decimals": 2
+ },
+ {
+  "claim": "One-step error, residual learner, origin 10",
+  "table": "results/tables/main_study/r4_hybrid_error_by_horizon.csv",
+  "key": {
+   "origin": 10,
+   "step": 1
+  },
+  "column": "hybrid_sqrt_xgb",
+  "expected": 0.56,
+  "decimals": 2
+ },
+ {
+  "claim": "Step-19 error, ARIMA, origin 10",
+  "table": "results/tables/main_study/r4_hybrid_error_by_horizon.csv",
+  "key": {
+   "origin": 10,
+   "step": 19
+  },
+  "column": "ARIMA_AICc",
+  "expected": 6.53,
+  "decimals": 2
+ },
+ {
+  "claim": "Step-19 error, residual learner, origin 10",
+  "table": "results/tables/main_study/r4_hybrid_error_by_horizon.csv",
+  "key": {
+   "origin": 10,
+   "step": 19
+  },
+  "column": "hybrid_sqrt_xgb",
+  "expected": 2.67,
+  "decimals": 2
+ },
+ {
+  "claim": "21700 knee cells, learner MAPE, origin 3",
+  "table": "results/tables/main_study/r4_g2_knee.csv",
+  "key": {
+   "dataset": "Kirkaldy",
+   "method": "hybrid_transfer",
+   "origin": 3
+  },
+  "column": "MAPE_knee",
+  "expected": 14.08,
+  "decimals": 2
+ },
+ {
+  "claim": "Sandia (deposited aggregate): residual learner MAPE, origin 5",
+  "table": "results/tables/main_study/r4_chronos_ft_summary.csv",
+  "key": {
+   "dataset": "snl",
+   "method": "hybrid_sqrt_xgb",
+   "origin": 5
+  },
+  "column": "MAPE",
+  "expected": 1.5,
+  "decimals": 2
+ },
+ {
+  "claim": "Sandia (deposited aggregate): ARIMA MAPE, origin 5",
+  "table": "results/tables/main_study/r4_chronos_ft_summary.csv",
+  "key": {
+   "dataset": "snl",
+   "method": "ARIMA_AICc",
+   "origin": 5
+  },
+  "column": "MAPE",
+  "expected": 4.57,
+  "decimals": 2
+ },
+ {
+  "claim": "Sandia (deposited aggregate): residual learner MAPE, origin 8",
+  "table": "results/tables/main_study/r4_chronos_ft_summary.csv",
+  "key": {
+   "dataset": "snl",
+   "method": "hybrid_sqrt_xgb",
+   "origin": 8
+  },
+  "column": "MAPE",
+  "expected": 1.7,
+  "decimals": 2
+ },
+ {
+  "claim": "Sandia (deposited aggregate): ARIMA MAPE, origin 8",
+  "table": "results/tables/main_study/r4_chronos_ft_summary.csv",
+  "key": {
+   "dataset": "snl",
+   "method": "ARIMA_AICc",
+   "origin": 8
+  },
+  "column": "MAPE",
+  "expected": 3.17,
+  "decimals": 2
+ }
+]

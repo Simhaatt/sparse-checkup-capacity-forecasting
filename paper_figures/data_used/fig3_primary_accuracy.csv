@@ -1,0 +1,21 @@
+method,origin,n_cells,MAPE,ci_low,ci_high,label,ci_source
+ARIMA_AICc,10,104,3.280943906254255,2.6398288954508278,4.020346948260305,ARIMA,r4_summary.csv
+ARIMA_AICc,15,104,2.712807325097636,2.0854950855087013,3.3695105964813306,ARIMA,r4_summary.csv
+ARIMA_AICc,20,104,2.7609756261521503,1.9568652952222207,3.6787286957621848,ARIMA,r4_summary.csv
+avg_ARIMA_XGB,10,104,3.2068708835786803,2.580199185172516,3.9321327930758745,ARIMA–XGBoost average (round 3),r4_summary.csv
+avg_ARIMA_XGB,15,104,2.500873760151883,1.967659001086809,3.060696923863904,ARIMA–XGBoost average (round 3),r4_summary.csv
+avg_ARIMA_XGB,20,104,2.2866452147699694,1.7043593214105912,2.934133898666014,ARIMA–XGBoost average (round 3),r4_summary.csv
+avg_ARIMA_hybrid,10,104,2.348316052540628,1.882447024524242,2.869099649682767,ARIMA–residual average,r4_summary.csv
+avg_ARIMA_hybrid,15,104,2.143284663217254,1.6608491448503235,2.6497458713205293,ARIMA–residual average,r4_summary.csv
+avg_ARIMA_hybrid,20,104,2.0689846219685557,1.488743380442549,2.718872593040616,ARIMA–residual average,r4_summary.csv
+r4_best_neural,10,104,2.626559747198416,2.0968149411472443,3.212664699007592,"Best neural, re-tuned per origin",r4_summary.csv
+r4_best_neural,15,104,2.232504816244385,1.752333669911928,2.757806705665321,"Best neural, re-tuned per origin",r4_summary.csv
+ChronosBolt_small_finetuned,10,104,2.537525173228841,2.0189963124203896,3.07517708337007,"Chronos-Bolt-small, fine-tuned",bootstrap of r4_chronos_ft_luh_pred.csv (this script)
+ChronosBolt_small_finetuned,15,104,2.4513844564459015,1.8082683441552385,3.1249097129949512,"Chronos-Bolt-small, fine-tuned",bootstrap of r4_chronos_ft_luh_pred.csv (this script)
+ChronosBolt_small_finetuned,20,104,2.4424275502016934,1.6223491736363937,3.3636988398550027,"Chronos-Bolt-small, fine-tuned",bootstrap of r4_chronos_ft_luh_pred.csv (this script)
+hybrid_sqrt_xgb,10,104,2.2241976894087987,1.7122543261583871,2.7683745120231915,Residual learner,r4_summary.csv
+hybrid_sqrt_xgb,15,104,2.185122059327071,1.7092461425138552,2.6821733705377637,Residual learner,r4_summary.csv
+hybrid_sqrt_xgb,20,104,2.182066883099073,1.6026652180394916,2.826392102012292,Residual learner,r4_summary.csv
+sqrt_k_lag1,10,104,3.193049255418261,2.621864122685741,3.769399382214609,Square-root prior,r4_summary.csv
+sqrt_k_lag1,15,104,3.1507312716646774,2.475021873428956,3.853574584730009,Square-root prior,r4_summary.csv
+sqrt_k_lag1,20,104,4.489889987125716,3.2498199079940195,5.887296927448247,Square-root prior,r4_summary.csv

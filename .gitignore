@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+results/reproduction_check.json
+experiments/*/inputs/
+experiments/*/results/
+experiments/*/tables/
+experiments/*/audit/
+experiments/*/checkpoints/
+experiments/snl_checkups.csv
+experiments/stage2_sandia/origin*/
+external/
+paper_figures/scripts/drawio_tools/package/

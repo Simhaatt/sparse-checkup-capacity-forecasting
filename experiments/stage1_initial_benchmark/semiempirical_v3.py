@@ -1,0 +1,68 @@
+"""Declared Arrhenius/power population model and one prefix-only cell scale."""
+from r3 import *
+from scipy.optimize import least_squares
+NAMES=['log_a_cal','Ea_cal_kJ_mol','SOC_cal_coef','log_a_cyc','Ea_cyc_kJ_mol','charge_rate_coef','discharge_rate_coef','DoD_coef','z_calendar','w_cycle']
+
+def design(g,op):
+    g=ordered(g);idx=np.maximum(np.arange(len(g))-1,0)
+    days=(g.timestamp_s.to_numpy()-g.timestamp_s.iloc[0])/86400
+    fec=g.nominal_FEC.to_numpy(float)
+    thermal=1000/8.314462618*(1/298.15-1/(g.temperature.to_numpy()[idx]+273.15))
+    return np.column_stack([days[idx],fec[idx],thermal,np.full(len(g),op.calendar_or_midpoint_SOC-.5),np.log1p(np.maximum(g.c_rate_chg.to_numpy()[idx],0)),np.log1p(np.maximum(g.c_rate_dischg.to_numpy()[idx],0)),np.full(len(g),op.nominal_DoD-.9)])
+def degradation(p,x):
+    cal=np.exp(p[0]+p[1]*x[:,2]+p[2]*x[:,3])*np.maximum(x[:,0],0)**p[8]
+    cyc=np.exp(p[3]+p[4]*x[:,2]+p[5]*x[:,4]+p[6]*x[:,5]+p[7]*x[:,6])*np.maximum(x[:,1],0)**p[9]
+    return cal+cyc
+def fit(frame,ops,fold,seed):
+    xx=[];yy=[];weights=[]
+    for cid,g0 in frame.groupby('cell_id'):
+        g=ordered(g0)
+        if len(g)<2:continue
+        xx.append(design(g,ops.loc[cid])[1:]);yy.append(1-g.Q.to_numpy()[1:]/g.Q0.iloc[0]);weights.extend([1/np.sqrt(len(g)-1)]*(len(g)-1))
+    x=np.vstack(xx);y=np.concatenate(yy);w=np.asarray(weights)
+    initial=np.array([np.log(.002),30.,2.,np.log(.003),-10.,.2,.2,1.,.5,.5])
+    lower=np.array([-18,0,0,-18,-100,0,0,0,.1,.1]);upper=np.array([0,100,10,0,100,4,4,10,1.5,1.5])
+    rng=np.random.default_rng(seed+1000*fold);restarts=[];best=None;t=time.perf_counter();cpu=time.process_time()
+    for repeat in range(4):
+        init=initial.copy() if repeat==0 else np.clip(initial+rng.normal(0,.1,len(initial)),lower+1e-6,upper-1e-6)
+        r=least_squares(lambda p:(degradation(p,x)-y)*w,init,bounds=(lower,upper),max_nfev=2000,ftol=1e-9,xtol=1e-9,gtol=1e-9)
+        restarts.append(dict(repeat=repeat,success=bool(r.success),cost=float(r.cost),nfev=int(r.nfev)))
+        if best is None or r.cost<best.cost:best=r
+    return best.x,dict(fold=fold,seed=seed,train_cells=frame.cell_id.nunique(),train_rows=len(y),fit_wall_seconds=time.perf_counter()-t,fit_cpu_seconds=time.process_time()-cpu,optimization_success=bool(best.success),training_cost=float(best.cost),jacobian_condition=float(np.linalg.cond(best.jac)),restarts_json=json.dumps(restarts),**dict(zip(NAMES,best.x)))
+def predict(params,g0,op,origin):
+    g=ordered(g0);d=degradation(params,design(g,op));loss=1-g.Q.to_numpy()[:origin]/g.Q0.iloc[0];den=float(d[:origin]@d[:origin])
+    scale=float(np.clip(d[:origin]@loss/den,0,10)) if den>1e-20 else 0.
+    pred=np.maximum((1-scale*d)*g.Q0.iloc[0],1e-6)
+    return pd.DataFrame(dict(cell_id=g.cell_id.iloc[0],row=np.arange(origin,len(g)),step=np.arange(1,len(g)-origin+1),Q_true=g.Q.iloc[origin:].to_numpy(),Q_pred=pred[origin:],cell_scale=scale))
+def main():
+    metadata('semiempirical_v3')
+    assert json.loads((ROOT/'audit/operating_metadata_receipt.json').read_text())['passed']
+    ops=pd.read_csv(ROOT/'results/operating_metadata.csv').set_index('cell_id')
+    frame=data().merge(pd.read_csv(ROOT/'results/nominal_fec_from_charge_events.csv')[['cell_id','checkup_idx','nominal_FEC']],on=['cell_id','checkup_idx'],validate='one_to_one')
+    rp=ROOT/'results/semiempirical_runs_v3.csv';pp=ROOT/'results/semiempirical_pred_v3.csv'
+    done=set(map(tuple,pd.read_csv(rp)[['fold','seed']].to_numpy())) if rp.exists() else set()
+    for fold in range(1,6):
+        parts=split(fold,frame)
+        for seed in SEEDS:
+            if (fold,seed) in done:continue
+            params,row=fit(parts['fit'],ops,fold,seed);assert np.isfinite(params).all()
+            np.save(ROOT/'checkpoints'/f'semiempirical_v3_f{fold}_s{seed}.npy',params)
+            rows=[]
+            for origin in [20,10,15]:
+                for role in ['validation','calibration','test']:
+                    for cid,g in parts[role][parts[role].cell_id.isin(cohort())].groupby('cell_id'):
+                        p=predict(params,g,ops.loc[cid],origin);p['fold']=fold;p['origin']=origin;p['role']=role;p['method']='semiempirical';p['seed']=seed;rows.append(p)
+            if pp.exists():
+                old=pd.read_csv(pp);incomplete=old.fold.eq(fold)&old.seed.eq(seed)
+                if incomplete.any():old[~incomplete].to_csv(pp,index=False)
+            append(pp,pd.concat(rows,ignore_index=True));append(rp,pd.DataFrame([row]));done.add((fold,seed));print('SEMIEMPIRICAL_V3',len(done),'/15',fold,seed,flush=True)
+    assert len(done)==15
+    p=pd.read_csv(pp);assert not p.duplicated(['fold','seed','origin','role','cell_id','row']).any()
+    for fold in range(1,6):
+        g=next(g for _,g in split(fold,frame)['test'].groupby('cell_id') if len(g)>20);g=ordered(g);y=g.copy();y.loc[20:,'Q']=.001
+        for seed in SEEDS:
+            params=np.load(ROOT/'checkpoints'/f'semiempirical_v3_f{fold}_s{seed}.npy');a=predict(params,g,ops.loc[g.cell_id.iloc[0]],20);b=predict(params,y,ops.loc[g.cell_id.iloc[0]],20)
+            assert np.array_equal(a.Q_pred,b.Q_pred)
+    receipt=dict(passed=True,population_fits=15,folds=5,seeds=SEEDS,random_start_seed='modelseed+1000*fold',parameters=10,formula='Q/Q0=1-alpha*(a_cal(T,SOC)*t_previous^z+a_cyc(T,C-rate,DoD)*nominalFEC_previous^w)',cell_calibration='One nonnegative prefix-only scale; no intercept.',global_fit='Fitting cells only; four starts permodelseed selected by training loss; no outertarget choice.',future_Q_tamper_invariant=True,nominalFEC='Completednormal-operation recharges timesfixedprotocolDoD; excludesdiagnosticcycling; no realizedfutureAh/capacityexposure.',limits='NominalFECapproximation, empiricalArrhenius/power-law comparator, not mechanistic parameteridentification. Profile discharge waveform-average-rate unavailable in export. Additional fixed protocolDoD beyond F7 disclosed.')
+    (ROOT/'audit/semiempirical_receipt_v3.json').write_text(json.dumps(receipt,indent=2),encoding='utf8');print('SEMIEMPIRICAL_V3_COMPLETE',flush=True)
+if __name__=='__main__':main()

@@ -1,0 +1,23 @@
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 31818.86it/s]
+snl fold 1 step 100 loss 3.9501 val 3.941
+snl fold 1 step 200 loss 4.2642 val 4.241
+snl fold 1 step 300 loss 6.8338 val 3.456
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 16899.65it/s]
+snl fold 2 step 100 loss 6.365 val 4.495
+snl fold 2 step 200 loss 5.1545 val 4.465
+snl fold 2 step 300 loss 6.7568 val 4.663
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 38023.68it/s]
+snl fold 3 step 100 loss 3.4072 val 2.576
+snl fold 3 step 200 loss 7.3339 val 2.404
+snl fold 3 step 300 loss 2.8263 val 2.465
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 36374.88it/s]
+snl fold 4 step 100 loss 2.9462 val 2.299
+snl fold 4 step 200 loss 4.6858 val 2.421
+snl fold 4 step 300 loss 3.1606 val 2.379
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 28193.36it/s]
+snl fold 5 step 100 loss 5.3229 val 3.57
+snl fold 5 step 200 loss 5.9629 val 3.998
+snl fold 5 step 300 loss 5.159 val 3.92
+snl origin 5 fine-tuned Chronos equal-cell MAPE 2.77 q10-q90 coverage 0.823
+snl origin 8 fine-tuned Chronos equal-cell MAPE 3.086 q10-q90 coverage 0.66
+G7_DONE

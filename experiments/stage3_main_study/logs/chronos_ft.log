@@ -1,0 +1,52 @@
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 17811.53it/s]
+snl fold 1 step 200 loss 4.4468 val 4.334
+snl fold 1 step 400 loss 5.7537 val 3.464
+snl fold 1 step 600 loss 3.305 val 3.156
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 28390.87it/s]
+snl fold 2 step 200 loss 4.5358 val 4.797
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights:  38%|███▊      | 54/143 [00:00<00:00, 499.55it/s]Loading weights:  79%|███████▉  | 113/143 [00:00<00:00, 542.95it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 596.38it/s]
+snl fold 1 step 200 loss 4.2789 val 4.409
+snl fold 1 step 400 loss 5.1979 val 3.43
+snl fold 1 step 600 loss 3.352 val 3.202
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 10370.09it/s]
+snl fold 2 step 200 loss 4.8547 val 4.88
+snl fold 2 step 400 loss 4.1095 val 4.143
+snl fold 2 step 600 loss 3.6403 val 4.334
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 11074.33it/s]
+snl fold 3 step 200 loss 7.3261 val 2.503
+snl fold 3 step 400 loss 4.5401 val 2.488
+snl fold 3 step 600 loss 3.3607 val 2.003
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 16013.50it/s]
+snl fold 4 step 200 loss 4.3904 val 2.911
+snl fold 4 step 400 loss 4.5475 val 2.798
+snl fold 4 step 600 loss 3.4207 val 2.761
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 7027.69it/s]
+snl fold 5 step 200 loss 6.0659 val 4.218
+snl fold 5 step 400 loss 6.6841 val 3.435
+snl fold 5 step 600 loss 4.0216 val 3.288
+snl origin 5 fine-tuned Chronos equal-cell MAPE 2.914 q10-q90 coverage 0.784
+snl origin 8 fine-tuned Chronos equal-cell MAPE 3.04 q10-q90 coverage 0.691
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 9383.08it/s]
+luh fold 1 step 200 loss 6.0087 val 1.665
+luh fold 1 step 400 loss 4.6286 val 1.626
+luh fold 1 step 600 loss 4.232 val 1.888
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 8674.06it/s]
+luh fold 2 step 200 loss 5.1232 val 2.272
+luh fold 2 step 400 loss 2.9335 val 2.345
+luh fold 2 step 600 loss 7.4079 val 2.031
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 35865.90it/s]
+luh fold 3 step 200 loss 5.8442 val 2.493
+luh fold 3 step 400 loss 11.2487 val 2.678
+luh fold 3 step 600 loss 6.5618 val 2.646
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 12820.86it/s]
+luh fold 4 step 200 loss 14.3117 val 2.744
+luh fold 4 step 400 loss 5.9276 val 2.658
+luh fold 4 step 600 loss 10.9912 val 2.847
+Loading weights:   0%|          | 0/143 [00:00<?, ?it/s]Loading weights: 100%|██████████| 143/143 [00:00<00:00, 8390.84it/s]
+luh fold 5 step 200 loss 16.0514 val 2.423
+luh fold 5 step 400 loss 5.5128 val 2.252
+luh fold 5 step 600 loss 4.6964 val 2.221
+luh origin 10 fine-tuned Chronos equal-cell MAPE 2.538 q10-q90 coverage 0.822
+luh origin 15 fine-tuned Chronos equal-cell MAPE 2.451 q10-q90 coverage 0.812
+luh origin 20 fine-tuned Chronos equal-cell MAPE 2.442 q10-q90 coverage 0.871
+CHRONOS_DONE

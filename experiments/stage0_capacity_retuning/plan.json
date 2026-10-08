@@ -1,0 +1,1320 @@
+{
+  "version": 1,
+  "created_client_date": "2026-10-06",
+  "origin_main": 20,
+  "other_origins": [
+    10,
+    15
+  ],
+  "trials_per_family_per_fold": 20,
+  "outer_folds": 5,
+  "seeds": [
+    42,
+    52,
+    62
+  ],
+  "features": [
+    "k_exp",
+    "temperature",
+    "c_rate_chg",
+    "c_rate_dischg",
+    "soc_window",
+    "age_type",
+    "Q0"
+  ],
+  "ablations": {
+    "prefix_fixed": [
+      "temperature",
+      "c_rate_chg",
+      "c_rate_dischg",
+      "soc_window",
+      "age_type",
+      "Q0"
+    ],
+    "history_only": []
+  },
+  "fixed_descriptor_rule": "Freeze all fixed descriptors to the first measured row of each cell, including in fit/selection/calibration/test. Sort only by timestamp.",
+  "primary_selection": "Lowest equal-cell recursive Q-MAPE on selection cells; deterministic trial-index tie break. Calibration and outer test never select settings.",
+  "checkpoint_selection": "Teacher-fed validation Q-MAPE then recursive validation Q-MAPE; selection cells only.",
+  "search_schedule": {
+    "teacher_epochs": 80,
+    "teacher_patience": 18,
+    "rollout_epochs": 15,
+    "rollout_patience": 5
+  },
+  "final_schedule": {
+    "teacher_epochs": 220,
+    "teacher_patience": 40,
+    "rollout_epochs": 40,
+    "rollout_patience": 15
+  },
+  "spaces": {
+    "compact_lstm": {
+      "L": [
+        8,
+        12,
+        16,
+        20
+      ],
+      "hidden": [
+        32,
+        48,
+        64,
+        96
+      ],
+      "layers": [
+        1
+      ],
+      "H": [
+        1,
+        3,
+        5,
+        8
+      ],
+      "lr": "loguniform(3e-4,3e-3); require L+H<=29"
+    },
+    "gru": {
+      "L": [
+        8,
+        12,
+        16,
+        20
+      ],
+      "hidden": [
+        32,
+        64,
+        96,
+        128
+      ],
+      "layers": [
+        1,
+        2
+      ],
+      "H": [
+        1,
+        3,
+        5,
+        8
+      ],
+      "lr": "loguniform(3e-4,3e-3); require L+H<=29"
+    },
+    "large_lstm": {
+      "L": [
+        8,
+        12,
+        16,
+        20
+      ],
+      "hidden": [
+        128,
+        160,
+        192
+      ],
+      "layers": [
+        2
+      ],
+      "H": [
+        1,
+        3,
+        5,
+        8
+      ],
+      "lr": "loguniform(3e-4,3e-3); require L+H<=29"
+    },
+    "rf": {
+      "L": [
+        8,
+        12,
+        16,
+        20
+      ],
+      "n_estimators": [
+        100,
+        200,
+        300
+      ],
+      "depth": [
+        4,
+        8,
+        12,
+        null
+      ],
+      "leaf": [
+        1,
+        2,
+        4,
+        8
+      ],
+      "max_features": [
+        0.5,
+        0.75,
+        1.0
+      ]
+    },
+    "xgb": {
+      "L": [
+        8,
+        12,
+        16,
+        20
+      ],
+      "n_estimators": [
+        100,
+        200,
+        300
+      ],
+      "depth": [
+        2,
+        3,
+        4,
+        6
+      ],
+      "lr": "loguniform(.02,.2)",
+      "subsample": [
+        0.7,
+        0.85,
+        1.0
+      ],
+      "colsample": [
+        0.7,
+        0.85,
+        1.0
+      ]
+    }
+  },
+  "trials": [
+    {
+      "family": "compact_lstm",
+      "trial": 1,
+      "cfg": {
+        "L": 8,
+        "hidden": 96,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0015057891314617512
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 2,
+      "cfg": {
+        "L": 20,
+        "hidden": 48,
+        "layers": 1,
+        "H": 5,
+        "lr": 0.00040303590026887273
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 3,
+      "cfg": {
+        "L": 20,
+        "hidden": 64,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0016923427601356028
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 4,
+      "cfg": {
+        "L": 12,
+        "hidden": 32,
+        "layers": 1,
+        "H": 5,
+        "lr": 0.0013948707786079707
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 5,
+      "cfg": {
+        "L": 8,
+        "hidden": 64,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.001285792451295551
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 6,
+      "cfg": {
+        "L": 16,
+        "hidden": 96,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.000886181955252869
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 7,
+      "cfg": {
+        "L": 12,
+        "hidden": 32,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0017837233768572163
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 8,
+      "cfg": {
+        "L": 8,
+        "hidden": 96,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0005927890757986378
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 9,
+      "cfg": {
+        "L": 16,
+        "hidden": 96,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0019867356803683297
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 10,
+      "cfg": {
+        "L": 8,
+        "hidden": 64,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0012041019889121854
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 11,
+      "cfg": {
+        "L": 20,
+        "hidden": 48,
+        "layers": 1,
+        "H": 5,
+        "lr": 0.00275007139552772
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 12,
+      "cfg": {
+        "L": 12,
+        "hidden": 48,
+        "layers": 1,
+        "H": 5,
+        "lr": 0.0017337269621861536
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 13,
+      "cfg": {
+        "L": 12,
+        "hidden": 96,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0011679176957268736
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 14,
+      "cfg": {
+        "L": 8,
+        "hidden": 96,
+        "layers": 1,
+        "H": 5,
+        "lr": 0.0007059048722733454
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 15,
+      "cfg": {
+        "L": 12,
+        "hidden": 48,
+        "layers": 1,
+        "H": 1,
+        "lr": 0.002367204506773188
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 16,
+      "cfg": {
+        "L": 16,
+        "hidden": 48,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0015173284688849047
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 17,
+      "cfg": {
+        "L": 16,
+        "hidden": 96,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0014883993072988889
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 18,
+      "cfg": {
+        "L": 8,
+        "hidden": 32,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0017983643968050287
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 19,
+      "cfg": {
+        "L": 20,
+        "hidden": 32,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.001347566881787259
+      }
+    },
+    {
+      "family": "compact_lstm",
+      "trial": 20,
+      "cfg": {
+        "L": 20,
+        "hidden": 96,
+        "layers": 1,
+        "H": 1,
+        "lr": 0.0007749661393628774
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 1,
+      "cfg": {
+        "L": 16,
+        "hidden": 64,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0013310666915822198
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 2,
+      "cfg": {
+        "L": 20,
+        "hidden": 128,
+        "layers": 2,
+        "H": 1,
+        "lr": 0.0013363828000192968
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 3,
+      "cfg": {
+        "L": 12,
+        "hidden": 128,
+        "layers": 1,
+        "H": 1,
+        "lr": 0.0007834832180331544
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 4,
+      "cfg": {
+        "L": 20,
+        "hidden": 64,
+        "layers": 1,
+        "H": 1,
+        "lr": 0.0019540051076988745
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 5,
+      "cfg": {
+        "L": 8,
+        "hidden": 64,
+        "layers": 1,
+        "H": 1,
+        "lr": 0.0011358078946504988
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 6,
+      "cfg": {
+        "L": 8,
+        "hidden": 32,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.0014872089892421416
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 7,
+      "cfg": {
+        "L": 16,
+        "hidden": 128,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0018625273652831185
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 8,
+      "cfg": {
+        "L": 8,
+        "hidden": 128,
+        "layers": 1,
+        "H": 1,
+        "lr": 0.0008428224425673154
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 9,
+      "cfg": {
+        "L": 20,
+        "hidden": 128,
+        "layers": 2,
+        "H": 1,
+        "lr": 0.002910092153133194
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 10,
+      "cfg": {
+        "L": 12,
+        "hidden": 32,
+        "layers": 2,
+        "H": 8,
+        "lr": 0.0011839263974029678
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 11,
+      "cfg": {
+        "L": 16,
+        "hidden": 64,
+        "layers": 1,
+        "H": 5,
+        "lr": 0.0022882979020435084
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 12,
+      "cfg": {
+        "L": 16,
+        "hidden": 128,
+        "layers": 2,
+        "H": 8,
+        "lr": 0.002367942110118525
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 13,
+      "cfg": {
+        "L": 12,
+        "hidden": 32,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0015346118071105038
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 14,
+      "cfg": {
+        "L": 8,
+        "hidden": 32,
+        "layers": 1,
+        "H": 1,
+        "lr": 0.0013420147343040781
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 15,
+      "cfg": {
+        "L": 16,
+        "hidden": 64,
+        "layers": 2,
+        "H": 1,
+        "lr": 0.0006408717551428362
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 16,
+      "cfg": {
+        "L": 20,
+        "hidden": 32,
+        "layers": 1,
+        "H": 3,
+        "lr": 0.0005955969009870505
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 17,
+      "cfg": {
+        "L": 8,
+        "hidden": 64,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0015358673641303314
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 18,
+      "cfg": {
+        "L": 16,
+        "hidden": 96,
+        "layers": 1,
+        "H": 5,
+        "lr": 0.0014662768811923494
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 19,
+      "cfg": {
+        "L": 20,
+        "hidden": 64,
+        "layers": 2,
+        "H": 1,
+        "lr": 0.002470211313596642
+      }
+    },
+    {
+      "family": "gru",
+      "trial": 20,
+      "cfg": {
+        "L": 16,
+        "hidden": 128,
+        "layers": 1,
+        "H": 8,
+        "lr": 0.0003735022934560373
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 1,
+      "cfg": {
+        "L": 8,
+        "hidden": 160,
+        "layers": 2,
+        "H": 3,
+        "lr": 0.0006971011453908115
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 2,
+      "cfg": {
+        "L": 20,
+        "hidden": 128,
+        "layers": 2,
+        "H": 1,
+        "lr": 0.0007703324015919782
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 3,
+      "cfg": {
+        "L": 12,
+        "hidden": 160,
+        "layers": 2,
+        "H": 8,
+        "lr": 0.000663666125029528
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 4,
+      "cfg": {
+        "L": 12,
+        "hidden": 128,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.0026801336714777856
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 5,
+      "cfg": {
+        "L": 8,
+        "hidden": 192,
+        "layers": 2,
+        "H": 1,
+        "lr": 0.00031933598006712334
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 6,
+      "cfg": {
+        "L": 20,
+        "hidden": 128,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.0008556674689528837
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 7,
+      "cfg": {
+        "L": 20,
+        "hidden": 160,
+        "layers": 2,
+        "H": 8,
+        "lr": 0.002043611407932342
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 8,
+      "cfg": {
+        "L": 20,
+        "hidden": 192,
+        "layers": 2,
+        "H": 8,
+        "lr": 0.00032697697982885307
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 9,
+      "cfg": {
+        "L": 12,
+        "hidden": 128,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.000512375004833919
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 10,
+      "cfg": {
+        "L": 20,
+        "hidden": 160,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.0011419113742020153
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 11,
+      "cfg": {
+        "L": 20,
+        "hidden": 192,
+        "layers": 2,
+        "H": 8,
+        "lr": 0.0011794168790581494
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 12,
+      "cfg": {
+        "L": 20,
+        "hidden": 160,
+        "layers": 2,
+        "H": 1,
+        "lr": 0.00197753989489712
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 13,
+      "cfg": {
+        "L": 16,
+        "hidden": 128,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.0012760693331410624
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 14,
+      "cfg": {
+        "L": 16,
+        "hidden": 192,
+        "layers": 2,
+        "H": 3,
+        "lr": 0.0009640362831555063
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 15,
+      "cfg": {
+        "L": 16,
+        "hidden": 192,
+        "layers": 2,
+        "H": 8,
+        "lr": 0.002990471495457285
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 16,
+      "cfg": {
+        "L": 12,
+        "hidden": 128,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.000807073675453139
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 17,
+      "cfg": {
+        "L": 12,
+        "hidden": 160,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.0016276557537673983
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 18,
+      "cfg": {
+        "L": 16,
+        "hidden": 160,
+        "layers": 2,
+        "H": 5,
+        "lr": 0.0011063570681953442
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 19,
+      "cfg": {
+        "L": 8,
+        "hidden": 192,
+        "layers": 2,
+        "H": 3,
+        "lr": 0.0006524215129235509
+      }
+    },
+    {
+      "family": "large_lstm",
+      "trial": 20,
+      "cfg": {
+        "L": 8,
+        "hidden": 192,
+        "layers": 2,
+        "H": 3,
+        "lr": 0.0012467774845669193
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 1,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 100,
+        "depth": 3,
+        "subsample": 0.7,
+        "colsample": 1.0,
+        "lr": 0.14407436276008403
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 2,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 300,
+        "depth": 3,
+        "subsample": 0.7,
+        "colsample": 0.85,
+        "lr": 0.07823751361216551
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 3,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 100,
+        "depth": 4,
+        "subsample": 1.0,
+        "colsample": 0.7,
+        "lr": 0.06474264090205828
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 4,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 200,
+        "depth": 4,
+        "subsample": 1.0,
+        "colsample": 1.0,
+        "lr": 0.10507949950572251
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 5,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 100,
+        "depth": 2,
+        "subsample": 1.0,
+        "colsample": 0.85,
+        "lr": 0.15541004825566032
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 6,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 200,
+        "depth": 4,
+        "subsample": 0.85,
+        "colsample": 0.85,
+        "lr": 0.0935053603349722
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 7,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 100,
+        "depth": 4,
+        "subsample": 0.7,
+        "colsample": 0.85,
+        "lr": 0.08427586837977151
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 8,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 200,
+        "depth": 4,
+        "subsample": 0.85,
+        "colsample": 0.7,
+        "lr": 0.02625818306873724
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 9,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 300,
+        "depth": 3,
+        "subsample": 1.0,
+        "colsample": 1.0,
+        "lr": 0.07795012054042424
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 10,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 100,
+        "depth": 3,
+        "subsample": 1.0,
+        "colsample": 0.7,
+        "lr": 0.09010851569473906
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 11,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 300,
+        "depth": 4,
+        "subsample": 1.0,
+        "colsample": 0.85,
+        "lr": 0.03832321572279822
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 12,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 100,
+        "depth": 3,
+        "subsample": 0.85,
+        "colsample": 0.7,
+        "lr": 0.03655239461306085
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 13,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 200,
+        "depth": 6,
+        "subsample": 1.0,
+        "colsample": 0.7,
+        "lr": 0.14834893972027366
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 14,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 200,
+        "depth": 2,
+        "subsample": 1.0,
+        "colsample": 1.0,
+        "lr": 0.16362771510447202
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 15,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 200,
+        "depth": 6,
+        "subsample": 0.7,
+        "colsample": 1.0,
+        "lr": 0.04699541314050331
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 16,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 100,
+        "depth": 2,
+        "subsample": 0.7,
+        "colsample": 0.85,
+        "lr": 0.03752917382214923
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 17,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 300,
+        "depth": 6,
+        "subsample": 0.85,
+        "colsample": 0.7,
+        "lr": 0.07105896097280719
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 18,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 300,
+        "depth": 4,
+        "subsample": 0.7,
+        "colsample": 1.0,
+        "lr": 0.020172594916394025
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 19,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 100,
+        "depth": 2,
+        "subsample": 0.85,
+        "colsample": 1.0,
+        "lr": 0.05482432764196577
+      }
+    },
+    {
+      "family": "xgb",
+      "trial": 20,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 100,
+        "depth": 2,
+        "subsample": 0.85,
+        "colsample": 0.7,
+        "lr": 0.18602162001123235
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 1,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 300,
+        "depth": 8,
+        "leaf": 1,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 2,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 300,
+        "depth": 8,
+        "leaf": 4,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 3,
+      "cfg": {
+        "L": 12,
+        "n_estimators": 100,
+        "depth": null,
+        "leaf": 1,
+        "max_features": 0.5
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 4,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 300,
+        "depth": null,
+        "leaf": 4,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 5,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 100,
+        "depth": 12,
+        "leaf": 2,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 6,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 300,
+        "depth": 8,
+        "leaf": 1,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 7,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 300,
+        "depth": 4,
+        "leaf": 8,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 8,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 300,
+        "depth": 8,
+        "leaf": 1,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 9,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 200,
+        "depth": 12,
+        "leaf": 4,
+        "max_features": 0.75
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 10,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 100,
+        "depth": 8,
+        "leaf": 4,
+        "max_features": 0.5
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 11,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 100,
+        "depth": 12,
+        "leaf": 2,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 12,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 100,
+        "depth": 12,
+        "leaf": 1,
+        "max_features": 0.5
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 13,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 100,
+        "depth": 12,
+        "leaf": 8,
+        "max_features": 0.5
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 14,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 100,
+        "depth": 4,
+        "leaf": 1,
+        "max_features": 0.5
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 15,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 200,
+        "depth": 12,
+        "leaf": 4,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 16,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 300,
+        "depth": 4,
+        "leaf": 2,
+        "max_features": 0.75
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 17,
+      "cfg": {
+        "L": 8,
+        "n_estimators": 200,
+        "depth": 8,
+        "leaf": 2,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 18,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 300,
+        "depth": null,
+        "leaf": 4,
+        "max_features": 1.0
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 19,
+      "cfg": {
+        "L": 16,
+        "n_estimators": 300,
+        "depth": null,
+        "leaf": 8,
+        "max_features": 0.75
+      }
+    },
+    {
+      "family": "rf",
+      "trial": 20,
+      "cfg": {
+        "L": 20,
+        "n_estimators": 300,
+        "depth": 8,
+        "leaf": 2,
+        "max_features": 0.5
+      }
+    }
+  ],
+  "inputs": {
+    "final_ten_seed_raw.csv": "5825191ba4565611cb9c16612490c073333a6d2de6c1904782922f9a4a683957",
+    "fixed_cell_split.csv": "8f1f9f21c6aa56d6140fbd5d930b975f90dc6dd7cad3d704a69953679542f6dd",
+    "fixed_split_test_predictions.csv": "02ef40562fcde447203dc91c477dbd2321dac554fb2e313adff03ad620319b54",
+    "fixed_split_val_predictions.csv": "4938af10ac26fec8edf24d16219e7f7d4e5f8ff7bd9f9baaa7cebd8e344122f0",
+    "grouped_cv_folds.csv": "f5119ddd50d3b85faa3bc919c0b2d198065e6e2eac4dab66e14106161a578860",
+    "kirkaldy_40_normalized_features.csv": "b90d69492030f7bb3ddbec717a04e6de3c4743b62b5253e02652314c7ef61374",
+    "phase1_cv_all_rows.csv": "15b32f4953e887d4db64c9de19d5113d1db4fb79978f203d3edab52598c6a0da"
+  },
+  "partition_sha256": "4cd8ca7c9c44e7b99f4732afd56176406b671ee4647a9431cba27a68ad35a737",
+  "conformal": "Held-out calibration cells disjoint from fit/selection/test; horizon-specific absolute-SOH residuals, finite-sample higher quantile. No finite bound if rank>n.",
+  "feature_ablation": "Matched fold-selected structural settings, new fits/scalers/checkpoints per reduced information set; no whole-corpus feature ranking. Legacy feature ablation retired.",
+  "scope": "20-origin clean nested random search; separately labelled10/15 origin replays of newly selected20-origin configurations, not additional random searches."
+}

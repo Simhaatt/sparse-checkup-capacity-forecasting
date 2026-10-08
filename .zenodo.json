@@ -1,0 +1,17 @@
+{
+  "title": "Forecasting lithium-ion capacity from sparse checkups: code, processed data and results",
+  "description": "<p>Code, processed capacity tables (redistributed under the source licences) and cell-level predictions for the manuscript <i>Forecasting lithium-ion capacity from sparse checkups: a prior-anchored residual learner that transfers across cell formats</i> (submitted to the Journal of Energy Storage). The archive covers four public datasets (Luh&ndash;Blank, Sandia, Kirkaldy 21700, Oxford pouch). It contains the leakage audit, the original experiment scripts, every summary table, the figure sources, and a Level-1 script that re-derives all reported numbers from the deposited predictions in about 15 seconds.</p><p>The code is released under the MIT licence. Derived data keep the source licences: CC BY 4.0 for Luh&ndash;Blank and Kirkaldy, and ODbL 1.0 for Oxford. Sandia cell-level data are not redistributed. See DATA_LICENSE.md.</p>",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {"name": "T. T., Simhaa", "affiliation": "Sri Sivasubramaniya Nadar College of Engineering", "orcid": "0009-0006-9041-1103"},
+    {"name": "B., Sivakumar", "affiliation": "Sri Sivasubramaniya Nadar College of Engineering", "orcid": "0000-0002-3612-6241"}
+  ],
+  "keywords": ["lithium-ion battery", "capacity forecasting", "reference performance test", "residual learning", "transfer learning", "conformal prediction", "data leakage"],
+  "related_identifiers": [
+    {"identifier": "10.35097/1969", "relation": "isDerivedFrom", "scheme": "doi"},
+    {"identifier": "10.5281/zenodo.10637534", "relation": "isDerivedFrom", "scheme": "doi"},
+    {"identifier": "10.5287/bodleian:KO2kdmYGg", "relation": "isDerivedFrom", "scheme": "doi"},
+    {"identifier": "10.1149/1945-7111/abae37", "relation": "references", "scheme": "doi"}
+  ]
+}

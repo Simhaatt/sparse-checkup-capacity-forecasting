@@ -1,0 +1,13 @@
+check,practitioner_rule,evidence
+Identify complete spectra,Group frequency points by completed-event timestamp/true acquisitionID; never assume seq_nr identifies a sweep.,eis_group_identifier_check.csv
+Use one clock and availability time,Check timestamp units and clock origins; use the completed acquisition time.,raw_eis_sweeps_v2.csv
+Join backward only,Most recent sweep timestamp <=capacitytimestamp; tolerance14days; no nearest or forward match.,aligned_re_v2.csv
+Preserve missing labels,"Unmatched Re remainsNaN withmask0; no ffill/bfill, cumulative max or whole-cell clipping.",aligned_re_v2.csv
+Expose anchors causally,Re0 only after the first aligned measurement; never use a later anchor in an earlier window.,r3.py:information/hold_resistance
+Freeze unknown future streams,"After origin hold last pre-origin Re/Re0, setmask0; apply the same rule in simulated training rollouts.",r3.py:install_hold_adapter
+Separate fitting/selection/calibration/test,Fit scalers and weights on training cells; choose configurations on inner validation; interval calibration independent.,cell_partitions.csv
+Audit actual contributors,"Trace values entering means, quantiles and clipping. Groupmax timestamps alone do not prove a mean used future values.",legacy_Re0_actual_contributors.csv
+Report temporal coverage,Show matched/unmatched counts percell and origin; unavailable targets are not perfect predictions.,aligned_re_coverage_v2.csv
+Report endpoints separately,Keep capacity performance primary. A flat imputed resistance tail can reduce jointmacro errors without predicting real resistance.,USER_ALIGNMENT_DECISION.json
+Document units and contexts,"Re inmOhm, strictRT/SOC50; metadata SOC-window/FEC definitions explicit.",operating_metadata.csv
+Verify counters physically,Profile num_cycles_op counts partial discharge events; complete recharge count is a different exposure.,operating_counter_vs_fec.csv

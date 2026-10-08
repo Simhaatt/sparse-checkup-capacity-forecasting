@@ -1,0 +1,88 @@
+path,sha256,origin,status
+experiments/stage0_capacity_retuning/analyse_inner_evidence.py,7e640282e5a72cf08912811395571489b6e354be5edc95f946c729b1101b86af,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/analyse_saved_predictions.py,131f351e0a095fe266a19002e97b51081f52de9a334ea1687c8faf5db5d758c2,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/audit_raw_capacity.py,5b687653f43ef204ee84c8cc889e40e1a63995e1c6ee3267c8b88649683f83f1,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/fetch_external.py,1a09b8424005c14ca60f246dc7a31b71c54ba954b587e36fdbd2ca7e7851e5da,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/plan.json,0e2295b1fd8e7383f2f85ff0df5eb96693e82e3bca11069f9d83adf53ca0e55f,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/prepare_oxford.py,e60a5dd30caf886692ee475c233e4d760e385f1c2132d7d7c43575c798137b05,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/run_chronos.py,b4741ef91dbd4824d03b65374b7158e1fec9a45b785cb85c32603fe3f3c03cf6,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/run_learning_curves.py,f073a3726d145c87537784d1fdcd4d0ea2dea9fa59f66f724775f8191119045f,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/run_nested_search.py,5f847d981b3213a4c196d5ed05b32d0748ec116f074021f4f113ff10a5cda4d2,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/run_oxford_models.py,161a4ad35ebbd135ce685180dd71bdfb187d6e81753093352bb8ded2caaaa8bb,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/run_semiempirical.py,52b27de1b3439028e15a4b8de5b9aa1e2a5b9fa080c9651686586ef7697ffde7,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/study.py,91719f8184a5524bdc8d83fd21d0d234f2c265e75d90d6b40ae61339aa5b4c55,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/trainer/exp_lib.py,026ff19022c37e9a2ad01527c4566037f20159a0c80f757580209746dc1c4f0e,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/univariate.py,9abb963fa1d74105a434c2e3acf137196d882daecec19ca90dafb15c67efa44b,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage0_capacity_retuning/write_followup_status.py,58790280e996f13a8f98904696e33bf80ca244f58968df349eae40667f6072b6,"pinn/JES_capacity_retuning (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/PLAN.json,33a9af2b41243ac61c5b3627ee0f3967d2cccbea2372b0e66796fbad4d893161,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/REPORT_TEMPLATE.md,a70f0c1f15f800106b5de22c87f40139c540c5bde3b1338b1dcc42b37899f4e2,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/aligned_resistance.py,0a3f841d45381c7085c7864497af8bed6beff94ac97918823e0d76ba22ddf83e,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/aligned_resistance_v2.py,2bd45fce472288da3e9b047151e939bf32cede118735718defce29e29cf55d8f,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/analyse_extras.py,e99e5d32e60f62f943b571bc133857675f4a11a74e222c1f1918316d50100647,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/analyse_round3.py,ca7edbdd0e90779c89e0a891eee6a88eeb11ab5c8169ee69aaedd2be15c8b643,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/build_complete_report.py,cbe1ac1f00fa8e5ccdcd5cd8d9c7f95a6a155d1bd219c0d8634ca4afc0abd6b8,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/chronos_paths.py,e485bdeed4c807c2a74b13d645f47ac5c3df8edf77ce888cfa00ed20001c6524,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/chronos_tiny.py,e1507274359305e5a70867409b69785983370b12cdbcdfcf547cf147b1e024d0,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/continue_round3.py,ee12397693ae71526569c045c168fc819672029de4336c9743eb24f07901a512,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/continue_round3_v2.py,848dd16044f2a869373e9ade47352736330123036733c3eb84eb32e2a729f1a5,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/continue_round3_v3.py,6265d6fb783c267977ecf7bf462780f9d771bdd387d48a86d124d319e0fa81a2,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/finalize_round3.py,31f0b1a5a4cc96cfe73639fcc4845532704b0ac05e623ddbaaabdc2f310a5cd5,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/finalize_round3_v2.py,b752fccfac2ebf8a1d72c19c5cf16966376bedfbe6389ab8667e5217248e459a,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/leaky_macro_diagnostic.py,60d7ec2661f8b91b64ee1a0da4442b8ad9de87706d78ae3f3dab5e559782650e,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/learning_curve.py,89cf58da799ddcb34c063a4f38e6991fcc66b4fe14119512cf6a6e3942a3347a,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/make_plots.py,25a6e018a2379a80a3fcd4921afd0ae39a7b3f85c9b947af3f9ee03ebad93307,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/native_chronos_coverage.py,cf989d07a6ac255fb904c405e8c3f3426e4787e3d10c556efd582451daae513e,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/operating_metadata.py,e0bb03e48ce3f564f197bd9ecfad84b770ea6078079db423386ce1eddf821c2e,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/oxford_models.py,0e2e466bdf77a5536f093a54040ed51e0a3daa427ad9d8a7a6705915e1f55a92,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/package_evidence.py,cf79185e6327644fa0dc96ad1d26c236b3b0b7fd3f88f983fb2181531d1030e5,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/prepare_reproduction.py,8dcea08ad33f282bd819189d970faa88dd4a2a400a6de1987ac5ec999faa1d53,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/quiet_resources.py,40cfd2ee22d67891448575dc268f04ce746c6b13ff862c9db88052bba384f55b,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/r3.py,fc723ebaea6fc8951a288f4e442d7380288e8192ccd16a6f8404f456db916fd9,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/raw_zip_transport.py,dff52a2348a39b67eaede6563986a0707fcaa6b0f255bf5ce0d32b1e2cde26e1,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/rebuild_chronos_small.py,6e146ae3881650975e96b3179486770a6a64d7f5528be897fd67cc7183c34343,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/requirements-recorded.txt,9dcf0a25f65b32a19604b9fb03ea0c9c40f7e1b3064f74578a20f714739063c4,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/robustness.py,0f368692a74e2cfe0d98053d9c286fccb96fabc78d94a58ec7402d074136d04e,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/run_models.py,c1d34c15775f7e886e302e5f865972066d99993204075b26436d10cc9c8839f7,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/semiempirical.py,7fcb521acc584cadcbe19735b73128d65e6a05c6c6779a8676e33e43f75c99e1,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/semiempirical_v2.py,4a096c7bdbf16f12f79ac3f1d8d7f5197f1c868d451744a9ea225f7638ccce8a,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/semiempirical_v3.py,cf3e3188d1bc8ecf93090688b63be7540ec1bfc7ee417384a0535f09b65e7c14,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/statistics_r3.py,4018459ce138e392724e3ec8d972db9f585166a99c1b01f4809b45a1206b57f7,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/summary_current.py,0de07bca91a557dc84741ee48a04aff485c7668f342fe16732d5edfff51f3fd4,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/trainer/exp_lib.py,b572aa452f9b44bd31b0e52db9652923845a6cbf5d342dce620bf8fb80b05895,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/univariate.py,9abb963fa1d74105a434c2e3acf137196d882daecec19ca90dafb15c67efa44b,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/verify_round3.py,e00c6772ccd4ca7b4bd5e1b8f3457faf4c449f16eced097a081a03d2ac2db741,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/write_progress_report_v2.py,b23cd2e6c3f469ea6a7590d18634aaca463445013ad8fcc4ab06f68cddd2965a,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage1_initial_benchmark/write_report.py,5f9e123fdcfb3bcafecd2fbcc3fe7eabcff8b8785df0d336ce24f7ab8b175a03,"pinn/JES_round3_reproduction_check_20261007 (laptop, Windows)",verbatim
+experiments/stage2_sandia/chronos_snl.py,4c44c1334c56c829216f900de0b7e8c2883874a263148f9b53eb5de25de5c30a,"sandia/bench (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage2_sandia/exp_lib.py,3c6f99ef498bfdb358243317bd688bde8da3e76b607c4385597bfccef285117b,"sandia/bench (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage2_sandia/extras.py,39a2643578af9c11157afa17a2cbb5375153cf3edff4ee71d777283ab57e20ec,"sandia/bench (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage2_sandia/refit_val.py,ac9621b55d78eadb25a8c724fbec04db3282619f4f2b1ccbc2cd030803f68cb8,"sandia/bench (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage2_sandia/run_all.sh,84219906acc59b49938fef4d5cae522497e7626d652a4e6f6fd122f9cf5e45db,"sandia/bench (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage2_sandia/snl_bench.py,5c7ae3dd8f7589eaec44c63716cc56063bfb1784666c2e0d4048c5255a095c2e,"sandia/bench (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage2_sandia/univariate.py,9abb963fa1d74105a434c2e3acf137196d882daecec19ca90dafb15c67efa44b,"sandia/bench (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/PLAN_R4.json,bab3493e55b5d891ee5463b10aa4dd961da2645942ee43aa13f9719b874abf5c,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r3.py,fc723ebaea6fc8951a288f4e442d7380288e8192ccd16a6f8404f456db916fd9,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_ablate.py,09da6359879808fb4a38ea0e15d6c427261c1ec1747f931e521d066feced74e3,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/r4_analyse.py,2f39975ab0fa4347bbb696d2123fca2bfa15b3b17e20c2196fd99078313d8403,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_chronos_ft.py,2d5fb97bfbb12712a3358ebd4f5f452b097c7e3b245ae682728bf26d94c322de,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/r4_decisions_v2.py,042ff634e16b2ca019f54abdc676bab0d73e281a886ac7cd3b7ae5bf3e16168b,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_g.py,c75e7ab7a980d4e1a754126e29e314adaeca44a8cdec0de79f3badad516f1e36,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/r4_hybrid.py,893e50e92c24a2087176733f869403cd3f886abff5ea073bb1794a3ae3ec8ab5,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_hybrid_snl.py,da78bf7dc9328234a4ef034b52720346f482b20a983a736f8464ad7d9415fe22,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/r4_models.py,c64ff15f8af549db62abadd2cfa7ca00733b9c64eb9cb950b7cdaa41d03bc842,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_plan.py,dcbad6548f937c56e002d8b9aa3c49ad831794809629df7d42dd804b19b35daa,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_pooled.py,f7263c4783496831e588bd3abc0cf81c0feb5555b832db877a63fa46cb33546b,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/r4_post.py,4ae18b5a3d7086d0cf415005b5aca0895e41ab4dfa34d890251ce8ace54fa3a4,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/r4_report.py,75cf12a31a12b4338bf8b9f2a31c63ac9d2f91ecbf3a7ac5d945f10211b94ab9,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_transfer.py,b1d9bba4be44119d250ffad67bbbf0e5046504c049d32dff1a6fc28fab135a1e,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_transfer_ablate.py,f91d0bb22ece90a7ffb06815a7156be6d75ab916d53c6818519796106f0eac66,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/r4_uncert.py,f7e70e1e2670b305b7af1401b13344e787c7b0b36409cf0a3a09958f05f883f5,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/resume_all.sh,eb4ff560d6ffbaa3a45c7b3dfe084bbc57eb92f46ae6478b4e0375b3a4ff4646,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/run_ab.sh,288494f393a8c9d71319625e85196cf3af0e31225d414a3155a3d5a73b292a26,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/run_after.sh,6731d46ee4ffd4eda7c0a7455551dd1f8a23583fb262f34ac8e15bfadb02f76b,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/run_all.sh,a1be82d58c1b7fa3c3c76fe08be35614f6ce42d23a96de63e1c217f7c327e543,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/run_all_v2.sh,6e82c046a195b5ac6d68944d7258fbef803b875bbd1e7b02fe01e2a8c02aaaf3,"r4 (cloud Linux run, 7 Oct 2026)",paths edited (# repo edit)
+experiments/stage3_main_study/summarise_from_predictions.py,9c75334069254d82ff66a6471928dfd9275c73c97bdf32ec6c46f81cce7529ad,"r4 (cloud Linux run, 7 Oct 2026)",added for this repository
+experiments/stage3_main_study/trainer/exp_lib.py,b572aa452f9b44bd31b0e52db9652923845a6cbf5d342dce620bf8fb80b05895,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+experiments/stage3_main_study/univariate.py,9abb963fa1d74105a434c2e3acf137196d882daecec19ca90dafb15c67efa44b,"r4 (cloud Linux run, 7 Oct 2026)",verbatim
+paper_figures/scripts/prepare_plot_data.py,e2369f842766fa7b54ce87c8c2838947446f51ea5be1baeec28ea14793528516,figure build (cloud),paths edited (# repo edit)

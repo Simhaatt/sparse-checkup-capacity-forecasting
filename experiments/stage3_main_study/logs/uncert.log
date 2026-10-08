@@ -1,0 +1,56 @@
+                method  origin  true_events  precision  recall    F1  last_APE  signed_bias_pct  optimistic_share  abs_cross_step_err
+       hybrid_sqrt_xgb      10           54      0.946   0.975 0.960     5.215            2.165             0.442               2.424
+      avg_ARIMA_hybrid      10           54      0.963   0.963 0.963     6.793            2.657             0.346               1.821
+                    rf      10           54      0.909   0.926 0.917     6.990           -1.351             0.462               2.753
+         avg_ARIMA_XGB      10           54      0.926   0.926 0.926     7.078            0.460             0.356               2.367
+                   xgb      10           54      0.900   0.889 0.894     7.111           -2.229             0.423               3.090
+regime_origin_selector      10           54      0.962   0.938 0.950     7.228            3.601             0.615               2.428
+      avg_ARIMA_XGB_NN      10           54      0.945   0.957 0.951     7.491            2.291             0.375               2.555
+           sqrt_k_lag1      10           54      0.909   0.926 0.917     8.647            6.010             0.712               3.200
+            ARIMA_AICc      10           54      0.957   0.815 0.880     9.858            3.149             0.433               1.864
+           best_neural      10           54      0.946   0.753 0.838    11.817            5.953             0.673               2.721
+           persistence      10           54      1.000   0.074 0.138    18.875           18.875             1.000               0.000
+       hybrid_sqrt_xgb      15           54      0.952   0.981 0.967     5.357            2.663             0.356               1.063
+                   xgb      15           54      0.913   0.975 0.943     6.127           -0.274             0.433               1.095
+      avg_ARIMA_hybrid      15           54      0.962   0.951 0.957     6.750            4.229             0.394               0.753
+         avg_ARIMA_XGB      15           54      0.939   0.951 0.945     6.812            2.761             0.452               0.695
+      avg_ARIMA_XGB_NN      15           54      0.969   0.944 0.956     6.823            3.573             0.452               0.837
+regime_origin_selector      15           54      0.963   0.957 0.960     6.869            3.388             0.452               0.813
+                    rf      15           54      0.918   0.963 0.940     6.952           -0.017             0.327               1.013
+           sqrt_k_lag1      15           54      0.926   0.926 0.926     8.595            6.751             0.558               1.420
+           best_neural      15           54      0.958   0.833 0.891     9.070            5.197             0.692               0.963
+            ARIMA_AICc      15           54      1.000   0.870 0.931     9.080            5.795             0.538               0.681
+           persistence      15           54      1.000   0.463 0.633    14.795           14.795             1.000               0.000
+       hybrid_sqrt_xgb      20           54      0.946   0.981 0.964     3.937            1.603             0.375               0.478
+      avg_ARIMA_hybrid      20           54      0.958   0.981 0.970     4.585            2.928             0.385               0.352
+                    rf      20           54      0.935   0.981 0.958     4.628           -0.436             0.317               0.478
+                   xgb      20           54      0.899   0.981 0.938     4.869           -0.390             0.346               0.453
+         avg_ARIMA_XGB      20           54      0.952   0.981 0.967     4.924            1.932             0.385               0.358
+      avg_ARIMA_XGB_NN      20           54      0.946   0.975 0.960     4.948            1.520             0.433               0.392
+     gru__history_only      20           54      0.969   0.969 0.969     5.527            2.394             0.442               0.306
+regime_origin_selector      20           54      0.933   0.944 0.939     6.248            1.616             0.433               0.431
+            ARIMA_AICc      20           54      0.963   0.963 0.963     6.458            4.254             0.490               0.288
+           best_neural      20           54      0.931   0.914 0.922     7.392            0.694             0.567               0.507
+           sqrt_k_lag1      20           54      0.943   0.926 0.935     8.043            6.782             0.538               0.700
+           persistence      20           54      1.000   0.630 0.773    10.371           10.371             1.000               0.000
+         family  nominal  coverage_equal_cell  mean_width_SOH_pp   LFP   NCA   NMC  origin
+hybrid_sqrt_xgb      0.8                0.743              3.092 0.865 0.374 0.811       5
+hybrid_sqrt_xgb      0.9                0.868              4.898 0.929 0.595 0.962       5
+hybrid_sqrt_xgb      0.8                0.757              3.540 0.797 0.400 0.757       8
+hybrid_sqrt_xgb      0.9                0.851              5.206 0.880 0.541 0.867       8
+         family  last_step_APE  last_step_signed_pct  share_optimistic  crossing_F1  true_crossing_cells  mean_abs_crossing_step_error  origin
+hybrid_sqrt_xgb          1.727                 0.490             0.525        0.690                   21                          0.65       5
+hybrid_sqrt_xgb          2.097                 0.765             0.538        0.205                    8                          0.00       8
+intervals fold 1
+intervals fold 2
+intervals fold 3
+intervals fold 4
+intervals fold 5
+ origin  nominal  coverage_equal_cell  mean_width_Ah  mean_width_SOH  finite_fraction  fitonly_point_MAPE
+     10      0.8               0.8362         0.2779          0.0942              1.0              2.7670
+     10      0.9               0.9464         0.4970          0.1685              1.0              2.7670
+     15      0.8               0.8237         0.2469          0.0837              1.0              2.5858
+     15      0.9               0.9122         0.4606          0.1561              1.0              2.5858
+     20      0.8               0.7914         0.2297          0.0779              1.0              2.5136
+     20      0.9               0.9006         0.4881          0.1655              1.0              2.5136
+UNCERT_DONE

@@ -1,0 +1,6 @@
+label,family,window_L,parameters,serialized_bytes,latency_cpu1_ms,serialization,weights,input_channels,targets,threads,size_kB_decimal,n_nodes
+CPUwin_NSGA-II_Q_only,lstm,15,35585.0,145925,0.24719499924685806,torch_state_dict,newly_initialized_seed42; structural benchmark,8,Q,1,145.925,
+gru_tuned_Q_only,gru,20,51265.0,208645,0.6387250003172085,torch_state_dict,newly_initialized_seed42; structural benchmark,8,Q,1,208.645,
+Manual_Q_only,lstm,20,484609.0,1943097,1.246404999983497,torch_state_dict,newly_initialized_seed42; structural benchmark,8,Q,1,1943.097,
+rf_tuned_Q_only,rf,10,,36398017,20.391189999645576,pickle_estimator,fit on fixed 209 source training cells; seed42,8,Q,1,36398.017,504536.0
+xgb_tuned_Q_only,xgb,20,,346738,0.2806050004437566,pickle_estimator,fit on fixed 209 source training cells; seed42,8,Q,1,346.738,4252.0

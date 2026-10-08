@@ -1,0 +1,10 @@
+origin,comparison,n,diff,wins,p
+5,hybrid_frozen - ARIMA_AICc,8,-9.388991067125126,8,0.0078125
+5,hybrid_frozen - sqrt_idx_prior,8,-3.4115682363763233,8,0.0078125
+5,hybrid_frozen - persistence,8,-8.911759680729396,8,0.0078125
+10,hybrid_frozen - ARIMA_AICc,8,-0.6082569807119942,3,0.84375
+10,hybrid_frozen - sqrt_idx_prior,8,-2.256759358821154,8,0.0078125
+10,hybrid_frozen - persistence,8,-7.1110046408079475,8,0.0078125
+20,hybrid_frozen - ARIMA_AICc,8,-2.9738581548778313,8,0.0078125
+20,hybrid_frozen - sqrt_idx_prior,8,-3.511083554570747,8,0.0078125
+20,hybrid_frozen - persistence,8,-7.1709091498587565,8,0.0078125

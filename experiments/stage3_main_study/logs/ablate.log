@@ -1,0 +1,133 @@
+arima luh 100 127
+arima luh 200 283
+arima luh 300 493
+arima luh 400 691
+arima luh 100 322
+arima luh 200 598
+arima luh 300 876
+arima luh 400 1137
+arima cache luh 860
+arima snl 100 248
+arima snl 200 474
+arima snl 300 714
+arima snl 400 930
+arima cache snl 484
+snl V1_main fold 1 done
+snl V1_main fold 2 done
+snl V1_main fold 3 done
+snl V1_main fold 4 done
+snl V1_main fold 5 done
+snl V2_no_diag fold 1 done
+snl V2_no_diag fold 2 done
+snl V2_no_diag fold 3 done
+snl V2_no_diag fold 4 done
+snl V2_no_diag fold 5 done
+snl V3_single_origin fold 1 done
+snl V3_single_origin fold 2 done
+snl V3_single_origin fold 3 done
+snl V3_single_origin fold 4 done
+snl V3_single_origin fold 5 done
+snl V4_linear_prior fold 1 done
+snl V4_linear_prior fold 2 done
+snl V4_linear_prior fold 3 done
+snl V4_linear_prior fold 4 done
+snl V4_linear_prior fold 5 done
+snl V5_persistence_anchor fold 1 done
+snl V5_persistence_anchor fold 2 done
+snl V5_persistence_anchor fold 3 done
+snl V5_persistence_anchor fold 4 done
+snl V5_persistence_anchor fold 5 done
+Traceback (most recent call last):
+  File "/home/claude/r4/r4_ablate.py", line 129, in <module>
+    run(what)
+    ~~~^^^^^^
+  File "/home/claude/r4/r4_ablate.py", line 103, in run
+    T = frame(tr, torig, static, pk, cache); V = frame(va, [o], static, pk, cache); E = frame(te, [o], static, pk, cache)
+  File "/home/claude/r4/r4_ablate.py", line 74, in frame
+    return pd.DataFrame([r for _, g in d.groupby('cell_id') for r in cell_rows(g, origins, static, prior_kind, cache)])
+                                                                     ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/claude/r4/r4_ablate.py", line 58, in cell_rows
+    fut = np.maximum(cache[(cid, o)], 1e-6); lr = mr = np.nan
+                     ~~~~~^^^^^^^^^^
+KeyError: ('SNL_18650_LFP_15C_0-100_0.5/2C_a', 10)
+arima cache luh 860
+arima cache snl 484
+arima cache luh 860
+arima cache snl 484
+snl V1_main fold 1 done
+snl V1_main fold 2 done
+snl V1_main fold 3 done
+snl V1_main fold 4 done
+snl V1_main fold 5 done
+snl V2_no_diag fold 1 done
+snl V2_no_diag fold 2 done
+snl V2_no_diag fold 3 done
+snl V2_no_diag fold 4 done
+snl V2_no_diag fold 5 done
+snl V3_single_origin fold 1 done
+snl V3_single_origin fold 2 done
+snl V3_single_origin fold 3 done
+snl V3_single_origin fold 4 done
+snl V3_single_origin fold 5 done
+snl V4_linear_prior fold 1 done
+snl V4_linear_prior fold 2 done
+snl V4_linear_prior fold 3 done
+snl V4_linear_prior fold 4 done
+snl V4_linear_prior fold 5 done
+snl V5_persistence_anchor fold 1 done
+snl V5_persistence_anchor fold 2 done
+snl V5_persistence_anchor fold 3 done
+snl V5_persistence_anchor fold 4 done
+snl V5_persistence_anchor fold 5 done
+snl V6_xuan_style fold 1 done
+snl V6_xuan_style fold 2 done
+snl V6_xuan_style fold 3 done
+snl V6_xuan_style fold 4 done
+snl V6_xuan_style fold 5 done
+origin                     5      8
+variant                            
+V1_main                1.554  1.386
+V2_no_diag             1.467  1.433
+V3_single_origin       1.472  1.805
+V4_linear_prior        1.642  1.518
+V5_persistence_anchor  1.439  1.778
+V6_xuan_style          1.922  1.928
+luh V1_main fold 1 done
+luh V1_main fold 2 done
+luh V1_main fold 3 done
+luh V1_main fold 4 done
+luh V1_main fold 5 done
+luh V2_no_diag fold 1 done
+luh V2_no_diag fold 2 done
+luh V2_no_diag fold 3 done
+luh V2_no_diag fold 4 done
+luh V2_no_diag fold 5 done
+luh V3_single_origin fold 1 done
+luh V3_single_origin fold 2 done
+luh V3_single_origin fold 3 done
+luh V3_single_origin fold 4 done
+luh V3_single_origin fold 5 done
+luh V4_linear_prior fold 1 done
+luh V4_linear_prior fold 2 done
+luh V4_linear_prior fold 3 done
+luh V4_linear_prior fold 4 done
+luh V4_linear_prior fold 5 done
+luh V5_persistence_anchor fold 1 done
+luh V5_persistence_anchor fold 2 done
+luh V5_persistence_anchor fold 3 done
+luh V5_persistence_anchor fold 4 done
+luh V5_persistence_anchor fold 5 done
+luh V6_xuan_style fold 1 done
+luh V6_xuan_style fold 2 done
+luh V6_xuan_style fold 3 done
+luh V6_xuan_style fold 4 done
+luh V6_xuan_style fold 5 done
+origin                    10     15     20
+variant                                   
+V1_main                2.293  2.218  2.223
+V2_no_diag             2.389  2.364  2.528
+V3_single_origin       2.519  2.179  2.286
+V4_linear_prior        2.347  2.332  2.177
+V5_persistence_anchor  2.492  2.379  2.095
+V6_xuan_style          2.705  2.588  2.489
+ABL_DONE
