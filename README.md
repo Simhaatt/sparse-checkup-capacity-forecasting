@@ -1,5 +1,8 @@
 # Forecasting lithium-ion capacity from sparse checkups
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23264761.svg)](https://doi.org/10.5281/zenodo.23264761)
+[![reproduce](https://github.com/Simhaatt/sparse-checkup-capacity-forecasting/actions/workflows/reproduce.yml/badge.svg)](https://github.com/Simhaatt/sparse-checkup-capacity-forecasting/actions/workflows/reproduce.yml)
+
 Code, processed data and result artifacts for the manuscript
 
 > Simhaa T. T. and B. Sivakumar, *Forecasting lithium-ion capacity from sparse checkups: a prior-anchored residual learner that transfers across cell formats*, submitted to the **Journal of Energy Storage** (2026).
@@ -75,7 +78,7 @@ Details and attribution are in [`DATA_LICENSE.md`](DATA_LICENSE.md). The code is
 
 ## Citation
 
-Please cite the manuscript and this archive; see [`CITATION.cff`](CITATION.cff). The Zenodo DOI of each release is shown on the Zenodo record linked from the release page.
+Please cite the manuscript and this archive: Simhaa T. T., B. Sivakumar (2026). *Forecasting lithium-ion capacity from sparse checkups: code, processed data and results* (v1.0.0). Zenodo. [doi:10.5281/zenodo.23264761](https://doi.org/10.5281/zenodo.23264761). See also [`CITATION.cff`](CITATION.cff).
 
 ## Contact
 
